@@ -11,6 +11,7 @@ import javax.inject.Inject;
  */
 public class EventHandler {
     private static final String TAG = "EventHandler";
+    Tester tester;
 
     @Inject
     public EventHandler() {
@@ -21,7 +22,14 @@ public class EventHandler {
     }
 
     public void onClickHanlder2(People v) {
-        Log.d(TAG, "onClick" + v.getName());
-        v.setName("Observable" + System.currentTimeMillis());
+        Log.d(TAG, "onClick " + v.getName());
+        if (tester != null) {
+            tester.setAdult(!tester.isAdult());
+        }
+        v.setName("Observable " + System.currentTimeMillis());
+    }
+
+    public void setTester(Tester tester) {
+        this.tester = tester;
     }
 }

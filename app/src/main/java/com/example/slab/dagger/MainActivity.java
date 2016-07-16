@@ -27,6 +27,7 @@ public class MainActivity extends SampleActivityBase {
         binding.setEventHandler(mHandler);
         Tester tester = new Tester();
         tester.setAdult(false);
+        mHandler.setTester(tester);
         binding.setTester(tester);
     }
 
