@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger_databinding/app.iml" filepath="$PROJECT_DIR$/dagger_databinding/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appglide/appglide.iml" filepath="$PROJECT_DIR$/appglide/appglide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" filepath="$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagger_test.iml" filepath="$PROJECT_DIR$/dagger_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/labrecycler/labrecycler.iml" filepath="$PROJECT_DIR$/labrecycler/labrecycler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_views/app.iml" filepath="$PROJECT_DIR$/lib_views/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" filepath="$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" />
     </modules>
   </component>

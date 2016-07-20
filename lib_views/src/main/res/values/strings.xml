@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CustomViewPlayGround</string>
+    <string name="action_settings">Settings</string>
+    <string name="bind_str">String from ButterKnifebind</string>
+</resources>

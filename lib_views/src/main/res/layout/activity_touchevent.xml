@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.slab.customviewplayground.view.MyFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.slab.customviewplayground.TouchEventTestActivity">
+
+    <com.example.slab.customviewplayground.view.MyView
+        android:layout_margin="20dp"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:background="#446655"
+        android:clickable="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#652313"
+        android:layout_gravity="bottom"/>
+
+
+
+</com.example.slab.customviewplayground.view.MyFrameLayout>
