@@ -1,16 +1,23 @@
 package com.example.slab.appglide;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-import android.widget.RemoteViews;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.ResourceDecoder;
+import com.bumptech.glide.load.data.DataFetcher;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.Resource;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.load.resource.SimpleResource;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,63 +27,109 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Glide.with(this)
-                .load("http://img13.360buyimg.com/n0/jfs/t2287/44/1515846482/119958/e7670fbe/56b16a69N6d8f1de7.jpg")
-                .placeholder(R.mipmap.ic_launcher)
-                .skipMemoryCache(true)
-                //.crossFade(500)
-                .centerCrop()
-                .into((ImageView) findViewById(R.id.image));
+//        Glide.with(this)
+//                .load("http://img13.360buyimg.com/n0/jfs/t2287/44/1515846482/119958/e7670fbe/56b16a69N6d8f1de7.jpg")
+//                .placeholder(R.mipmap.ic_launcher)
+//                .skipMemoryCache(true)
+//                //.crossFade(500)
+//                .centerCrop()
+//                .into((ImageView) findViewById(R.id.image));
+//
+//        Glide.with(this)
+//                .load("http://img13.360buyimg.com/n0/jfs/t2287/44/1515846482/119958/e7670fbe/56b16a69N6d8f1de7.jpg")
+//                .placeholder(R.mipmap.ic_launcher)
+//                .skipMemoryCache(true)
+//                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                //.crossFade(500)
+//                .animate(R.anim.slide_left_in)
+//                .fitCenter()
+//                .into((ImageView) findViewById(R.id.image2));
+//
+//        test();
+        Bundle b = new Bundle();
+        System.out.println(b.hashCode()+"  ==");
+        Handler h = new Handler(Looper.myLooper(), new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                System.out.println(msg.obj+" --");
+                return true;
+            }
+        });
+        h.obtainMessage(0, b).sendToTarget();
+        b.putString("k", "v");
 
+
+    }
+
+    private void test() {
         Glide.with(this)
-                .load("http://img13.360buyimg.com/n0/jfs/t2287/44/1515846482/119958/e7670fbe/56b16a69N6d8f1de7.jpg")
-                .placeholder(R.mipmap.ic_launcher)
-                .skipMemoryCache(true)
+                .using(new MyModelLoader(), String.class)
+                .from(MyModel.class)
+                .as(String.class)
+                .load(new MyModelImpl())
+                .decoder(new ResourceDecoder<String, String>() {
+                    @Override
+                    public Resource<String> decode(String source, int width, int height) throws IOException {
+                        return new SimpleResource<>("decoded " + source);
+                    }
+
+                    @Override
+                    public String getId() {
+                        return "";
+                    }
+                })
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                //.crossFade(500)
-                .animate(R.anim.slide_left_in)
-                .fitCenter()
-                .into((ImageView) findViewById(R.id.image2));
+                .into(new SimpleTarget<String>() {
+                    @Override
+                    public void onResourceReady(String resource, GlideAnimation<? super String> glideAnimation) {
+                        System.out.println("" + resource);
+                    }
+                });
 
-        //createNotification(this);
+
+
     }
 
-    private void createNotification(Context context) {
-        final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.custom_notification);
+    interface  MyModel {
+        public String queryId();
+    }
 
-        rv.setImageViewResource(R.id.remoteview_notification_icon, R.mipmap.ic_launcher);
+    static class MyModelImpl implements MyModel {
 
-        rv.setTextViewText(R.id.remoteview_notification_headline, "Headline");
-        rv.setTextViewText(R.id.remoteview_notification_short_message, "Short Message");
-
-        // build notification
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Content Title")
-                .setContentText("Content Text")
-                //.setContent(rv)
-                .setPriority( NotificationCompat.PRIORITY_MIN);
-
-        final Notification notification = mBuilder.build();
-
-        // set big content view for newer androids
-        if (android.os.Build.VERSION.SDK_INT >= 16) {
-            notification.bigContentView = rv;
+        @Override
+        public String queryId() {
+            return "fake url";
         }
-
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(NOTIFICATION_ID, notification);
-
-//        NotificationTarget notificationTarget =  new NotificationTarget(
-//                context,
-//                rv,
-//                R.id.remoteview_notification_icon,
-//                notification,
-//                NOTIFICATION_ID);
-//        Glide
-//            .with( context.getApplicationContext() ) // safer!
-//            .load( "http://img13.360buyimg.com/n0/jfs/t2287/44/1515846482/119958/e7670fbe/56b16a69N6d8f1de7.jpg" )
-//            .asBitmap()
-//            .into( notificationTarget );
     }
+
+    static class MyModelLoader implements ModelLoader<MyModel, String> {
+
+        @Override
+        public DataFetcher<String> getResourceFetcher(final MyModel model, int width, int height) {
+            return new DataFetcher<String>() {
+                @Override
+                public String loadData(Priority priority) throws Exception {
+                    return "hello world";
+                }
+
+                @Override
+                public void cleanup() {
+
+                }
+
+                @Override
+                public String getId() {
+                    return model.queryId();
+                }
+
+                @Override
+                public void cancel() {
+
+                }
+            };
+        }
+    }
+
+
+
 }

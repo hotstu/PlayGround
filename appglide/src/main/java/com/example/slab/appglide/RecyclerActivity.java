@@ -1,23 +1,29 @@
-package com.example.slab.labrecycler;
+package com.example.slab.appglide;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RecyclerActivity extends AppCompatActivity {
     private static final String TAG = "RecyclerActivity";
     RecyclerView mRecycler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,53 +34,61 @@ public class RecyclerActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter();
 
         mRecycler.setAdapter(myAdapter);
-        myAdapter.showProgress(true);
         mRecycler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                ArrayList<String> array = new ArrayList<>();
-                array.add("item 1: tom");
-                array.add("item 2: jerry");
-                array.add("item 3: dog");
-                ((MyAdapter) mRecycler.getAdapter()).showProgress(false);
+                List<String> array = Arrays.asList(
+                        // few results from https://www.google.com/search?tbm=isch&q=image&tbs=isz:lt,islt:4mp
+                        "http://www.noaanews.noaa.gov/stories/images/goes-12%2Dfirstimage-large081701%2Ejpg",
+                        "http://www.spektyr.com/PrintImages/Cerulean%20Cross%203%20Large.jpg",
+                        "https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg",
+                        "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ultraviolet_image_of_the_Cygnus_Loop_Nebula_crop.jpg",
+                        "https://upload.wikimedia.org/wikipedia/commons/c/c5/Polarlicht_2_kmeans_16_large.png",
+                        "https://www.hq.nasa.gov/alsj/a15/M1123519889LCRC_isometric_min-8000_g0dot5_enhanced_labeled.jpg",
+                        "http://oceanexplorer.noaa.gov/explorations/02fire/logs/hirez/octopus_hires.jpg",
+                        "https://upload.wikimedia.org/wikipedia/commons/b/bf/GOES-13_First_Image_jun_22_2006_1730Z.jpg",
+                        "http://www.zastavki.com/pictures/originals/2013/Photoshop_Image_of_the_horse_053857_.jpg",
+                        "http://www.marcogiordanotd.com/blog/wp-content/uploads/2014/01/image9Kcomp.jpg",
+                        "https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-7.jpg",
+                        "https://www.apple.com/v/imac-with-retina/a/images/overview/5k_image.jpg",
+                        "https://www.gimp.org/tutorials/Lite_Quickies/lordofrings_hst_big.jpg",
+                        "http://www.cesbio.ups-tlse.fr/multitemp/wp-content/uploads/2015/07/Mad%C3%A8re-022_0_1.jpg",
+                        "https://www.spacetelescope.org/static/archives/fitsimages/large/slawomir_lipinski_04.jpg",
+                        "https://upload.wikimedia.org/wikipedia/commons/b/b4/Mardin_1350660_1350692_33_images.jpg",
+                        "http://4k.com/wp-content/uploads/2014/06/4k-image-tiger-jumping.jpg"
+                );
                 ((MyAdapter) mRecycler.getAdapter()).setDataSet(array);
 
             }
-        }, 3000);
+        }, 1000);
     }
 
     public void add(View view) {
         ((MyAdapter) mRecycler.getAdapter()).addItem("new item " + SystemClock.currentThreadTimeMillis());
     }
+
     public void addr(View view) {
         MyAdapter adapter = (MyAdapter) mRecycler.getAdapter();
         int index = (int) (Math.random() * (adapter.getItemCount()));
         adapter.addItem("new item " + SystemClock.currentThreadTimeMillis(), index);
     }
 
-     public void del(View view) {
-         MyAdapter adapter = (MyAdapter) mRecycler.getAdapter();
-         if (adapter.getItemCount() == 0) {
-             return;
-         }
-         int index = (int) (Math.random() * (adapter.getItemCount()));
-         adapter.removeItem(index);
-     }
+    public void del(View view) {
+        MyAdapter adapter = (MyAdapter) mRecycler.getAdapter();
+        if (adapter.getItemCount() == 0) {
+            return;
+        }
+        int index = (int) (Math.random() * (adapter.getItemCount()));
+        adapter.removeItem(index);
+    }
 
     public void test(View v) {
         if (mRecycler.getLayoutManager() instanceof GridLayoutManager) {
             mRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        }
-        else {
+        } else {
             mRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         }
-//        Log.e(TAG, "test: "+ getResources().getDisplayMetrics().densityDpi );
-//
-//        Drawable drawable = ContextCompat.getDrawable(this, R.drawable.firefox_128x128);
-//        Log.e(TAG, String.format(Locale.ROOT, "height:%d, width:%d",
-//                drawable.getIntrinsicHeight(), drawable.getIntrinsicWidth()) );
     }
-
 
 
     private static class MyAdapter extends RecyclerView.Adapter<MyVH> {
@@ -88,46 +102,15 @@ public class RecyclerActivity extends AppCompatActivity {
         @Override
         public MyVH onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            View v;
-            if (1 == viewType) {
-                v = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
-            }
-            else {
-                v = inflater.inflate(R.layout.item_progress, parent, false);
-            }
+            View v = inflater.inflate(R.layout.item_progress, parent, false);
             return new MyVH(v, viewType);
-
-
         }
 
         @Override
         public void onBindViewHolder(final MyVH holder, int position) {
-            if (1 == holder.getViewType()) {
-                holder.setText(getItem(position));
-            }
-            else {
-                holder.getRoot().findViewById(R.id.progress_bar).setVisibility(View.GONE);
-                holder.getRoot().addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-
-                    @Override
-                    public void onLayoutChange(View v, int left, int top, int right, int bottom,
-                                               int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                        v.removeOnLayoutChangeListener(this);
-
-                        ViewGroup.LayoutParams layoutParams = holder.getRoot().getLayoutParams();
-                        View view = (View) holder.getRoot().getParent();
-                        layoutParams.height = view.getHeight() - view.getPaddingTop() - view.getPaddingBottom();
-                        Log.e(TAG, "onLayoutChange: parent:"+ view + ",height" + layoutParams.height);
-                        holder.getRoot().findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
-                    }
-                });
-            }
+            holder.bind(getItem(position));
         }
 
-        @Override
-        public int getItemViewType(int position) {
-            return getItem(position).startsWith("pro")? -1: 1;
-        }
 
         @Override
         public int getItemCount() {
@@ -159,41 +142,35 @@ public class RecyclerActivity extends AppCompatActivity {
             notifyItemRemoved(position);
         }
 
-        public final void showProgress(boolean show) {
-            if (show) {
-                mList.clear();
-                mList.add("progress");
-            } else {
-                // we do not need to clear list if we have already changed
-                // data set or we have no ProgressItem to been cleared
-                if (mList.size() == 1 && getItemViewType(0) == -1) {
-                    mList.clear();
-                }
-            }
-        }
     }
 
     private static class MyVH extends RecyclerView.ViewHolder {
+        private final MyProgressTarget<Bitmap> target;
         View root;
         TextView tv;
+        ImageView imageView;
         int viewType;
+
         public MyVH(View itemView, int viewType) {
             super(itemView);
             this.root = itemView;
             this.viewType = viewType;
-            tv = (TextView) itemView.findViewById(android.R.id.text1);
+            tv = (TextView) itemView.findViewById(R.id.text);
+            imageView = (ImageView) itemView.findViewById(R.id.image);
+            target = new MyProgressTarget<>(new BitmapImageViewTarget(imageView), imageView, tv);
         }
 
-        public void setText(String item) {
-            tv.setText(item);
+        void bind(String url) {
+            target.setModel(url); // update target's cache
+            Glide
+                    .with(imageView.getContext())
+                    .load(url)
+                    .asBitmap()
+                    .placeholder(R.mipmap.ic_launcher)
+                    .centerCrop() // needs explicit transformation, because we're using a custom target
+                    .into(target);
         }
 
-        public View getRoot() {
-            return root;
-        }
 
-        public int getViewType() {
-            return viewType;
-        }
     }
 }
