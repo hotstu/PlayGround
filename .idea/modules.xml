@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/labrecycler/labrecycler.iml" filepath="$PROJECT_DIR$/labrecycler/labrecycler.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_views/lib_views.iml" filepath="$PROJECT_DIR$/lib_views/lib_views.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" filepath="$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transtitions/transtitions.iml" filepath="$PROJECT_DIR$/transtitions/transtitions.iml" />
     </modules>
   </component>
 </project>

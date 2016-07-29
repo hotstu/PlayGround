@@ -15,6 +15,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class RecyclerActivity extends AppCompatActivity {
     private static final String TAG = "RecyclerActivity";
     RecyclerView mRecycler;
