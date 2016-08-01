@@ -33,4 +33,12 @@ public class TouchEventTestActivity extends AppCompatActivity{
     public void dellevel(View view) {
         bv.setLevel(Math.max(1, bv.getLevel() - 1));
     }
+
+    public void accelerate(View view) {
+        bv.setDuration(Math.max(1000, bv.getDuration() - 1000));
+    }
+
+    public void decelerate(View view) {
+        bv.setDuration(bv.getDuration() + 1000);
+    }
 }

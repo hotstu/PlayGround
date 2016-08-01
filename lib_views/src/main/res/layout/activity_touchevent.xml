@@ -34,6 +34,22 @@
                     android:text="del"
                     android:backgroundTint="@color/colorAccent"
                     />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="accelerate"
+                    android:text="acc"
+                    android:backgroundTint="@color/colorAccent"
+                    />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="decelerate"
+                    android:text="dec"
+                    android:backgroundTint="@color/colorAccent"
+                    />
         </LinearLayout>
 
 </LinearLayout>

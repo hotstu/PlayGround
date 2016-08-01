@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,15 +24,16 @@ public class BezierView extends View {
     private float width;
     private float height;
     private PointF[] basePoints;
-    private  int N = 5;
+    private  int N = 10;
     private PointF capturedPoint = null;
     private Paint pointPaint;
     private Paint pointLabelPaint;
-    private Paint pathPaint;
-    private Paint pathPaint2;
-    private Path linePath;
-    private Path linePath2;
-    private ValueAnimator valueAnimator;
+    private Paint bezierCurvePathPaint;
+    private Paint straightPathsPaint;
+    private Path bezierCurvePath;
+    private Path[] straightPaths;
+    private ValueAnimator MoveAnimator;
+    private long duration = 3000;
 
     public BezierView(Context context) {
         this(context, null);
@@ -58,16 +61,16 @@ public class BezierView extends View {
         pointLabelPaint.setTextSize(40);
 
         capRegion = 20*density;
-        linePath = new Path();
-        pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        pathPaint.setColor(Color.YELLOW);
-        pathPaint.setStrokeWidth(2*density);
-        pathPaint.setStyle(Paint.Style.STROKE);
+        bezierCurvePath = new Path();
+        bezierCurvePathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        bezierCurvePathPaint.setColor(Color.YELLOW);
+        bezierCurvePathPaint.setStrokeWidth(2*density);
+        bezierCurvePathPaint.setStyle(Paint.Style.STROKE);
 
-        pathPaint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-        pathPaint2.setColor(Color.CYAN);
-        pathPaint2.setStrokeWidth(1);
-        pathPaint2.setStyle(Paint.Style.STROKE);
+        straightPathsPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        straightPathsPaint.setColor(Color.CYAN);
+        straightPathsPaint.setStrokeWidth(1*density);
+        straightPathsPaint.setStyle(Paint.Style.STROKE);
 
     }
 
@@ -82,6 +85,14 @@ public class BezierView extends View {
 
     public int getLevel() {
         return this.N;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public long getDuration() {
+        return duration;
     }
 
     /**
@@ -128,11 +139,16 @@ public class BezierView extends View {
         return Math.min(max, Math.max(min, value));
     }
 
+    /**
+     *
+     * @param sizeChenged 是否需要重新生成各个点的位置
+     */
     private void buildPoints(boolean sizeChenged) {
+        boolean newCreate = (basePoints == null);
         if (basePoints == null ) {
             basePoints = new PointF[N];
         }
-        if (sizeChenged) {
+        if (sizeChenged || newCreate) {
             basePoints[0] = generateRandomPoint(null);
             PointF temp = basePoints[0];
             for (int i = 1; i < basePoints.length; i++) {
@@ -140,7 +156,8 @@ public class BezierView extends View {
                 //theta = (float) (Math.atan2(( temp.y - array[i].y ), ( temp.x - array[i].x)));
                 temp = basePoints[i];
             }
-        } else {
+        }
+        else {
             PointF[] oldArray = basePoints;
             basePoints = new PointF[N];
             int i;
@@ -158,21 +175,24 @@ public class BezierView extends View {
 
     }
 
-    private PointF compute(PointF[] points, float fraciton) {
-        if (linePath2 == null)
-            linePath2 = new Path();
-        linePath2.reset();
-        linePath2.moveTo(points[0].x, points[0].y);
-
-        for (int i = 1; i < points.length; i++) {
-            linePath2.lineTo(points[i].x, points[i].y);
-            for(int j = 0; j < points.length - i; j++){
-                points[j].x = points[j].x + (points[j+1].x - points[j].x) * fraciton;
-                points[j].y = points[j].y + (points[j+1].y - points[j].y) * fraciton;
-            }
+    /**
+     * call when N is changed, the array of paths need rebuild
+     */
+    private void rewindPaths() {
+        Path[] oldPaths = straightPaths;
+        straightPaths = new Path[N];
+        if (oldPaths == null) {
+            return;
         }
-        return points[0];
+        for (int i = 0; i < straightPaths.length && i < oldPaths.length; i++) {
+            straightPaths[i] = oldPaths[i];
+        }
+
     }
+
+
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -180,7 +200,6 @@ public class BezierView extends View {
         float y = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-
                 capturedPoint = capturePoint(x ,y);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -188,13 +207,18 @@ public class BezierView extends View {
                     capturedPoint.x = clamp(x, 10 * density, width - 10 * density);
                     capturedPoint.y = clamp(y, 10 * density, height - 10 * density);
                     invalidate();
+                } else {
+
                 }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                if (capturedPoint != null) {
+                    invalidate();
+                } else {
+                    showAnimate();
+                }
                 capturedPoint = null;
-
-                showAnimate();
                 break;
         }
         return true;
@@ -211,29 +235,69 @@ public class BezierView extends View {
     }
 
     private void showAnimate() {
-        if (valueAnimator != null && valueAnimator.isStarted()) {
-            valueAnimator.removeAllUpdateListeners();
-            valueAnimator.cancel();
+        if (MoveAnimator != null && MoveAnimator.isStarted()) {
+            MoveAnimator.removeAllUpdateListeners();
+            MoveAnimator.cancel();
         }
-        linePath.reset();
-        linePath.moveTo(basePoints[0].x, basePoints[0].y);
-        valueAnimator = ValueAnimator.ofFloat(0, 1);
-        valueAnimator.setDuration(3000);
+        bezierCurvePath.reset();
+        bezierCurvePath.moveTo(basePoints[0].x, basePoints[0].y);
+        MoveAnimator = ValueAnimator.ofFloat(0, 1);
+        MoveAnimator.setDuration(duration);
 
-        final PointF[] deepCopy = new PointF[basePoints.length];
-        for (int i = 0; i < deepCopy.length; i++) {
-            deepCopy[i] = new PointF();
-            deepCopy[i].set(basePoints[i]);
+        final float[] deepCopyX = new float[basePoints.length];
+        final float[] deepCopyY = new float[basePoints.length];
+        final float[] dpX = new float[basePoints.length];
+        final float[] dpY = new float[basePoints.length];
+        rewindPaths();
+        if (straightPaths[0] == null)
+            straightPaths[0] = new Path();
+        straightPaths[0].reset();
+        for (int i = 0; i < basePoints.length; i++) {
+            deepCopyX[i] = basePoints[i].x;
+            dpX[i] = basePoints[i].x;
+            deepCopyY[i] = basePoints[i].y;
+            dpY[i] = basePoints[i].y;
+            if (i == 0) {
+                straightPaths[0].moveTo(deepCopyX[i], deepCopyY[i]);
+            } else {
+                straightPaths[0].lineTo(deepCopyX[i], deepCopyY[i]);
+            }
         }
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        final float[] ret = new float[2];
+
+        MoveAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                PointF p = compute(deepCopy, animation.getAnimatedFraction());
-                linePath.lineTo(p.x, p.y);
+                compute(deepCopyX, deepCopyY, dpX, dpY, ret, animation.getAnimatedFraction());
+                bezierCurvePath.lineTo(ret[0], ret[1]);
                 invalidate();
             }
         });
-        valueAnimator.start();
+        MoveAnimator.start();
+    }
+
+    private float[] compute(float[] deepcopyX, float[] deepcopyY, float[] dpx, float[] dpy, float[] result, float fraciton) {
+        System.arraycopy(deepcopyX, 0, dpx, 0, deepcopyX.length);
+        System.arraycopy(deepcopyY, 0, dpy, 0, deepcopyY.length);
+        for (int i = 1; i < dpx.length; i++) {
+            for(int j = 0; j < dpx.length - i; j++){
+                dpx[j] = dpx[j] + (dpx[j+1] - dpx[j]) * fraciton;
+                dpy[j] = dpy[j] + (dpy[j+1] - dpy[j]) * fraciton;
+            }
+            if (straightPaths[i] == null)
+                straightPaths[i] = new Path();
+            straightPaths[i].reset();
+            for (int j = 0; j < dpx.length - i; j++) {
+                if (j == 0) {
+                    straightPaths[i].moveTo(dpx[j], dpy[j]);
+                } else {
+                    straightPaths[i].lineTo(dpx[j], dpy[j]);
+                }
+            }
+        }
+        result[0] = dpx[0];
+        result[1] = dpy[0];
+        return result;
     }
 
 
@@ -243,9 +307,74 @@ public class BezierView extends View {
             canvas.drawCircle(basePoints[i].x, basePoints[i].y, 5*density, pointPaint);
             canvas.drawText("" + i, basePoints[i].x+ 2*5*density, basePoints[i].y + 2*5*density, pointLabelPaint);
         }
-        canvas.drawPath(linePath2, pathPaint2);
-        canvas.drawPath(linePath, pathPaint);
+        for (int i = 0; i < straightPaths.length; i++) {
+            if (straightPaths[i] != null) {
+                straightPathsPaint.setColor(getColor(i, straightPaths.length));
+                canvas.drawPath(straightPaths[i], straightPathsPaint);
+            }
+        }
+        canvas.drawPath(bezierCurvePath, bezierCurvePathPaint);
 
     }
+
+    private int getColor(int clusterSize, int sizeRange) {
+        final float hueRange = 220;
+        final float size = Math.min(clusterSize, sizeRange);
+        final float hue = (sizeRange - size) * (sizeRange - size) / (sizeRange * sizeRange) * hueRange;
+        return Color.HSVToColor(new float[]{
+                hue, 1f, .6f
+        });
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        SaveState state = new SaveState(superState);
+        state.n = N;
+        state.duration = duration;
+        return state;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        SaveState s = (SaveState) state;
+        super.onRestoreInstanceState(s.getSuperState());
+        setLevel(s.n);
+        setDuration(s.duration);
+    }
+
+    private static class SaveState extends BaseSavedState {
+        int n;
+        long duration;
+
+        public SaveState(Parcelable superState) {
+            super(superState);
+        }
+
+        public SaveState(Parcel source) {
+            super(source);
+            n = source.readInt();
+            duration = source.readLong();
+        }
+
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeInt(n);
+            out.writeLong(duration);
+        }
+
+        public static final Parcelable.Creator<SaveState> CREATOR
+                = new Parcelable.Creator<SaveState>() {
+            public SaveState createFromParcel(Parcel in) {
+                return new SaveState(in);
+            }
+
+            public SaveState[] newArray(int size) {
+                return new SaveState[size];
+            }
+        };
+    }
+
 
 }
