@@ -7,7 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" filepath="$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/labrecycler/labrecycler.iml" filepath="$PROJECT_DIR$/labrecycler/labrecycler.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_views/lib_views.iml" filepath="$PROJECT_DIR$/lib_views/lib_views.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materialanim/materialanim.iml" filepath="$PROJECT_DIR$/materialanim/materialanim.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" filepath="$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/propertyanim/propertyanim.iml" filepath="$PROJECT_DIR$/propertyanim/propertyanim.iml" />
       <module fileurl="file://$PROJECT_DIR$/transtitions/transtitions.iml" filepath="$PROJECT_DIR$/transtitions/transtitions.iml" />
     </modules>
   </component>

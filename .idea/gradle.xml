@@ -13,6 +13,8 @@
             <option value="$PROJECT_DIR$/dagger_databinding" />
             <option value="$PROJECT_DIR$/labrecycler" />
             <option value="$PROJECT_DIR$/lib_views" />
+            <option value="$PROJECT_DIR$/materialanim" />
+            <option value="$PROJECT_DIR$/propertyanim" />
             <option value="$PROJECT_DIR$/transtitions" />
           </set>
         </option>
@@ -24,6 +26,8 @@
             <option value="$PROJECT_DIR$/dagger_databinding" />
             <option value="$PROJECT_DIR$/labrecycler" />
             <option value="$PROJECT_DIR$/lib_views" />
+            <option value="$PROJECT_DIR$/materialanim" />
+            <option value="$PROJECT_DIR$/propertyanim" />
             <option value="$PROJECT_DIR$/transtitions" />
           </set>
         </option>

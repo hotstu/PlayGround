@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".TouchEventTestActivity"
-            android:label="View/viewgroup点击事件"
+            android:label="View/bezier曲线绘制"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

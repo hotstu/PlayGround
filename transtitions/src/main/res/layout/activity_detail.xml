@@ -17,5 +17,20 @@
         android:layout_weight="1"
         android:transitionName="@string/tn_listicon"
         android:src="@mipmap/ic_launcher"/>
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/Black"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView android:textColor="@color/White"
+            android:layout_width="wrap_content"
+            android:text="Glowing Text"
+            android:textSize="48sp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:shadowColor="#00ff00"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="1" />
+    </LinearLayout>
 </LinearLayout>
