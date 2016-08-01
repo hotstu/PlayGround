@@ -22,12 +22,14 @@ public class BezierView extends View {
     private float width;
     private float height;
     private PointF[] basePoints;
-    private  int N = 3;
+    private  int N = 5;
     private PointF capturedPoint = null;
     private Paint pointPaint;
     private Paint pointLabelPaint;
     private Paint pathPaint;
+    private Paint pathPaint2;
     private Path linePath;
+    private Path linePath2;
     private ValueAnimator valueAnimator;
 
     public BezierView(Context context) {
@@ -61,6 +63,11 @@ public class BezierView extends View {
         pathPaint.setColor(Color.YELLOW);
         pathPaint.setStrokeWidth(2*density);
         pathPaint.setStyle(Paint.Style.STROKE);
+
+        pathPaint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
+        pathPaint2.setColor(Color.CYAN);
+        pathPaint2.setStrokeWidth(1);
+        pathPaint2.setStyle(Paint.Style.STROKE);
 
     }
 
@@ -152,7 +159,13 @@ public class BezierView extends View {
     }
 
     private PointF compute(PointF[] points, float fraciton) {
+        if (linePath2 == null)
+            linePath2 = new Path();
+        linePath2.reset();
+        linePath2.moveTo(points[0].x, points[0].y);
+
         for (int i = 1; i < points.length; i++) {
+            linePath2.lineTo(points[i].x, points[i].y);
             for(int j = 0; j < points.length - i; j++){
                 points[j].x = points[j].x + (points[j+1].x - points[j].x) * fraciton;
                 points[j].y = points[j].y + (points[j+1].y - points[j].y) * fraciton;
@@ -194,7 +207,6 @@ public class BezierView extends View {
         this.height = h;
 
         buildPoints(true);
-
         showAnimate();
     }
 
@@ -231,7 +243,9 @@ public class BezierView extends View {
             canvas.drawCircle(basePoints[i].x, basePoints[i].y, 5*density, pointPaint);
             canvas.drawText("" + i, basePoints[i].x+ 2*5*density, basePoints[i].y + 2*5*density, pointLabelPaint);
         }
+        canvas.drawPath(linePath2, pathPaint2);
         canvas.drawPath(linePath, pathPaint);
 
     }
+
 }
