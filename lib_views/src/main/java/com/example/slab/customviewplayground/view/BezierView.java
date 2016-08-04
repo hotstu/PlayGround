@@ -32,7 +32,7 @@ public class BezierView extends View {
     private Paint straightPathsPaint;
     private Path bezierCurvePath;
     private Path[] straightPaths;
-    private ValueAnimator MoveAnimator;
+    private ValueAnimator moveAnimator;
     private long duration = 3000;
 
     public BezierView(Context context) {
@@ -235,14 +235,14 @@ public class BezierView extends View {
     }
 
     private void showAnimate() {
-        if (MoveAnimator != null && MoveAnimator.isStarted()) {
-            MoveAnimator.removeAllUpdateListeners();
-            MoveAnimator.cancel();
+        if (moveAnimator != null && moveAnimator.isStarted()) {
+            moveAnimator.removeAllUpdateListeners();
+            moveAnimator.cancel();
         }
         bezierCurvePath.reset();
         bezierCurvePath.moveTo(basePoints[0].x, basePoints[0].y);
-        MoveAnimator = ValueAnimator.ofFloat(0, 1);
-        MoveAnimator.setDuration(duration);
+        moveAnimator = ValueAnimator.ofFloat(0, 1);
+        moveAnimator.setDuration(duration);
 
         final float[] deepCopyX = new float[basePoints.length];
         final float[] deepCopyY = new float[basePoints.length];
@@ -265,7 +265,7 @@ public class BezierView extends View {
         }
         final float[] ret = new float[2];
 
-        MoveAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        moveAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 compute(deepCopyX, deepCopyY, dpX, dpY, ret, animation.getAnimatedFraction());
@@ -273,7 +273,7 @@ public class BezierView extends View {
                 invalidate();
             }
         });
-        MoveAnimator.start();
+        moveAnimator.start();
     }
 
     private float[] compute(float[] deepcopyX, float[] deepcopyY, float[] dpx, float[] dpy, float[] result, float fraciton) {
@@ -341,6 +341,17 @@ public class BezierView extends View {
         super.onRestoreInstanceState(s.getSuperState());
         setLevel(s.n);
         setDuration(s.duration);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        if (moveAnimator != null) {
+            if (moveAnimator.isStarted()) {
+                moveAnimator.cancel();
+            }
+            moveAnimator = null;
+        }
+        super.onDetachedFromWindow();
     }
 
     private static class SaveState extends BaseSavedState {

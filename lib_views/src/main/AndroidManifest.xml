@@ -15,7 +15,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE"/>
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
         <activity
@@ -25,7 +25,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE"/>
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
         <activity
@@ -35,7 +35,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE"/>
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
         <activity
@@ -45,7 +45,33 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE"/>
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VerticalTextPaintActivity"
+            android:label="View/纵向文字探索">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RazerActivity"
+            android:label="View/激光剑">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DynamicViewActivity"
+            android:label="View/动态添加view">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
     </application>
