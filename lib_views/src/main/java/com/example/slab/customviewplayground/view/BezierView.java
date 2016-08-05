@@ -10,6 +10,7 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -79,7 +80,7 @@ public class BezierView extends View {
         this.N = level;
         if (old != getLevel()) {
             buildPoints(false);
-            invalidate();
+            ViewCompat.postInvalidateOnAnimation(this);
         }
     }
 
@@ -206,7 +207,7 @@ public class BezierView extends View {
                 if (capturedPoint != null) {
                     capturedPoint.x = clamp(x, 10 * density, width - 10 * density);
                     capturedPoint.y = clamp(y, 10 * density, height - 10 * density);
-                    invalidate();
+                    ViewCompat.postInvalidateOnAnimation(this);
                 } else {
 
                 }
@@ -214,7 +215,7 @@ public class BezierView extends View {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 if (capturedPoint != null) {
-                    invalidate();
+                    ViewCompat.postInvalidateOnAnimation(this);
                 } else {
                     showAnimate();
                 }
@@ -270,7 +271,7 @@ public class BezierView extends View {
             public void onAnimationUpdate(ValueAnimator animation) {
                 compute(deepCopyX, deepCopyY, dpX, dpY, ret, animation.getAnimatedFraction());
                 bezierCurvePath.lineTo(ret[0], ret[1]);
-                invalidate();
+                ViewCompat.postInvalidateOnAnimation(BezierView.this);
             }
         });
         moveAnimator.start();

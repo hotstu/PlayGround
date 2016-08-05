@@ -66,8 +66,10 @@
                 <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".DynamicViewActivity"
-            android:label="View/动态添加view">
+        <activity
+            android:name=".DynamicViewActivity"
+            android:label="View/动态添加view"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
