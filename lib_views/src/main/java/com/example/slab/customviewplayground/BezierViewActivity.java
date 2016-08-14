@@ -11,7 +11,7 @@ import com.example.slab.customviewplayground.view.BezierView;
 /**
  * Created by hotstuNg on 2016/7/10.
  */
-public class TouchEventTestActivity extends AppCompatActivity{
+public class BezierViewActivity extends AppCompatActivity{
     BezierView bv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class TouchEventTestActivity extends AppCompatActivity{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.e("TouchEventTestActivity", "onTouchEvent " + event);
+        Log.e("BezierViewActivity", "onTouchEvent " + event);
         return false;
     }
 

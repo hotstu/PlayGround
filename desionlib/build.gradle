@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.example.slab.customviewplayground"
+        applicationId "com.example.slab.desionlib"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
@@ -25,8 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    compile 'com.jakewharton:butterknife:8.2.1'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
-    //compile 'com.github.hotstu:ModuleLoader:51c3cfc491'
-    compile project(':moduleLoader')
+    compile 'com.android.support:cardview-v7:23.4.0'
 }

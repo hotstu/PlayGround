@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TouchEventTestActivity"
+            android:name=".BezierViewActivity"
             android:label="View/bezier曲线绘制"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -70,6 +70,59 @@
             android:name=".DynamicViewActivity"
             android:label="View/动态添加view"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DynamicViewGroupActivity"
+            android:label="View/动态添加viewGroup">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TextSpanActivity"
+            android:label="View/textSpan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PathFunViewActivity"
+            android:label="View/PathFun">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PathFunActivity2"
+            android:label="View/PathFun2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MeasureExploreActivity"
+            android:label="View/关于measure测量">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DragActivity1"
+            android:label="View/拖拽1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
