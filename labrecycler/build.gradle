@@ -19,10 +19,17 @@ android {
     }
 }
 
+task hello {
+    doLast {
+        println 'Hello world!'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
     compile project(':moduleLoader')
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportVersion"
+    compile 'com.android.support:design:23.4.0'
 }

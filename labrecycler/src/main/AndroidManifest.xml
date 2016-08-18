@@ -8,8 +8,27 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecyclerActivity"
+        <activity
+            android:name=".RecyclerActivity"
             android:label="运用/使用recycler">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".dragable.DragDropActivity1"
+            android:label="运用/原创通用generic adpater"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".dragable.TestActivity"
+            android:label="test">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

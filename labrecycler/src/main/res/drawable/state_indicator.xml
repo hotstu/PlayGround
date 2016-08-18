@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:maxLevel="0"
+        android:drawable="@drawable/default_icon" />
+    <item
+        android:maxLevel="9999"
+        android:drawable="@drawable/insect_attention" />
+    <item
+        android:maxLevel="10000"
+        android:drawable="@drawable/complted" />
+</level-list>
