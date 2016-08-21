@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.slab.labrecycler.R;
+import com.example.slab.labrecycler.decor.EventHandlerItemDecor;
 import com.example.slab.labrecycler.decor.Stepable;
 import com.example.slab.labrecycler.decor.VerticalStepItemDecoration;
 import com.example.slab.loader.widget.SlabAdapter;
@@ -56,6 +57,14 @@ public class DragDropActivity1 extends AppCompatActivity implements SlabAdapter.
         //adapter.setHasStableIds(true);
         recycler.setAdapter(adapter);
         recycler.addItemDecoration(new VerticalStepItemDecoration(this));
+        EventHandlerItemDecor eventHandler = new EventHandlerItemDecor();
+        eventHandler.attach2RecyclerView(recycler);
+        eventHandler.setListener(new EventHandlerItemDecor.OnViewHolderClickListener() {
+            @Override
+            public void onClick(RecyclerView parent, RecyclerView.ViewHolder viewHolder) {
+                Log.d(TAG, "onClick() called with: " + "parent = [" + parent + "], viewHolder = [" + viewHolder + "]");
+            }
+        });
         //recycler.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
     }
