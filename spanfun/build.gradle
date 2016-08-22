@@ -1,12 +1,5 @@
 apply plugin: 'com.android.application'
 
-buildscript {
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
-    }
-}
-
 
 android {
     compileSdkVersion 23
