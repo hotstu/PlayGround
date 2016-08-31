@@ -1,11 +1,12 @@
-package com.example.slab.customviewplayground;
+package io.github.hotstu.graphicfun;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.widget.SeekBar;
 
-import com.example.slab.customviewplayground.view.PathFunView2Progressing;
+import io.github.hotstu.graphicfun.pathFun.PathFunView2Progressing;
+
 
 public class PathFunViewActivity extends AppCompatActivity {
 

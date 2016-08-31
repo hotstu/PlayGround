@@ -1,4 +1,4 @@
-package com.example.slab.customviewplayground.view;
+package io.github.hotstu.graphicfun.bezier;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -376,8 +376,8 @@ public class BezierView extends View {
             out.writeLong(duration);
         }
 
-        public static final Parcelable.Creator<SaveState> CREATOR
-                = new Parcelable.Creator<SaveState>() {
+        public static final Creator<SaveState> CREATOR
+                = new Creator<SaveState>() {
             public SaveState createFromParcel(Parcel in) {
                 return new SaveState(in);
             }

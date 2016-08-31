@@ -1,4 +1,4 @@
-package com.example.slab.customviewplayground;
+package io.github.hotstu.graphicfun;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.slab.customviewplayground.view.BezierView;
+import io.github.hotstu.graphicfun.bezier.BezierView;
 
 /**
  * Created by hotstuNg on 2016/7/10.
@@ -16,7 +16,7 @@ public class BezierViewActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_touchevent);
+        setContentView(R.layout.activity_bezier);
         bv = (BezierView) findViewById(R.id.bv);
     }
 

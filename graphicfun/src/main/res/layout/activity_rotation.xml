@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.github.hotstu.graphicfun.ScalpelFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scalpelView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:id="@+id/activity_rotation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="io.github.hotstu.graphicfun.RotationActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"
+            android:fontFamily="cursive"
+            android:text="Hello, world"
+            android:textSize="30sp" />
+
+
+        <SeekBar
+            android:id="@+id/seekBarx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" />
+
+        <SeekBar
+            android:id="@+id/seekBary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" />
+
+        <SeekBar
+            android:id="@+id/seekBarz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" />
+
+    </LinearLayout>
+</io.github.hotstu.graphicfun.ScalpelFrameLayout>

@@ -62,4 +62,14 @@ public class MainActivity2 extends AppCompatActivity implements SlabAdapter.Arra
         ((ImageView) holder.itemView.findViewById(R.id.image)).setImageResource( adapter.getItem(position));
     }
 
+    @Override
+    public int getItemViewType(SlabAdapter<Integer> adapter, int position) {
+        return 0;
+    }
+
+    @Override
+    public long getItemId(SlabAdapter<Integer> adapter, int position) {
+        return 0;
+    }
+
 }

@@ -18,16 +18,7 @@
                 <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".BezierViewActivity"
-            android:label="View/bezier曲线绘制"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".MyScrollViewActivity"
             android:label="View/MyScrollViewActivity"
@@ -51,15 +42,6 @@
         <activity
             android:name=".VerticalTextPaintActivity"
             android:label="View/纵向文字探索">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".RazerActivity"
-            android:label="View/激光剑">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -94,24 +76,7 @@
                 <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".PathFunViewActivity"
-            android:label="View/PathFun">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".PathFunActivity2"
-            android:label="View/PathFun2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".MeasureExploreActivity"
             android:label="View/关于measure测量">

@@ -26,7 +26,7 @@ public class VerticalStepItemDecoration extends RecyclerView.ItemDecoration {
     private int widthPixel;
     /** 圆形状态指示图标 **/
     @Nullable private Drawable stateIndicator;
-    private final Rect r;
+    private final Rect swapRect;
     /** 是否未启动在下方**/
     private boolean reversed = false;
     /** 圆下的背景， 用于遮盖直线**/
@@ -51,7 +51,7 @@ public class VerticalStepItemDecoration extends RecyclerView.ItemDecoration {
         background = a.getColor(R.styleable.verticalStemItemDecoration_slab_background, Color.TRANSPARENT);
         a.recycle();
 
-        r = new Rect();
+        swapRect = new Rect();
 
         mPaint = new Paint();
         mPaint.setStrokeWidth(10);
@@ -111,34 +111,34 @@ public class VerticalStepItemDecoration extends RecyclerView.ItemDecoration {
             RecyclerView.ViewHolder vh = parent.getChildViewHolder(child);
             Stepable step = (Stepable) vh;
 
-            r.set(0, 0, getWidthPixel(), getWidthPixel());
-            r.offset(((int) ((right + left) * .5f - r.centerX())),
-                    ((int) (( top)  - r.top)));
+            swapRect.set(0, 0, getWidthPixel(), getWidthPixel());
+            swapRect.offset(((int) ((right + left) * .5f - swapRect.centerX())),
+                    ((int) (( top)  - swapRect.top)));
             //c.drawRect(left, top, parent.getWidth() - parent.getPaddingRight(), bottom, mPaintDot);
             int level = (int) (100 * step.getCompleteFraction());
 
             mPath.reset();
             //画线
             if (vh.getAdapterPosition() == 0) {
-                mPath.moveTo(r.centerX(), r.centerY());
-                mPath.lineTo(r.centerX(), bottom);
+                mPath.moveTo(swapRect.centerX(), swapRect.centerY());
+                mPath.lineTo(swapRect.centerX(), bottom);
             }
             else if (vh.getAdapterPosition() == parent.getAdapter().getItemCount() - 1) {
-                mPath.moveTo(r.centerX(), top);
-                mPath.lineTo(r.centerX(), r.centerY());
+                mPath.moveTo(swapRect.centerX(), top);
+                mPath.lineTo(swapRect.centerX(), swapRect.centerY());
             } else {
-                mPath.moveTo(r.centerX(), top);
-                mPath.lineTo(r.centerX(), bottom);
+                mPath.moveTo(swapRect.centerX(), top);
+                mPath.lineTo(swapRect.centerX(), bottom);
             }
             mPaint.setColor(Color.WHITE);
             //如果已完成（大于10000） 或者完成中并且未开始的在上方 则画实线
             c.drawPath(mPath, (level > 0 && !isReversed()) || level >=10000 ? mPaint: mPaintDot);
             mPaint.setColor(background);
-            c.drawCircle(r.centerX(), r.centerY(), getWidthPixel()*.38f, mPaint);
+            c.drawCircle(swapRect.centerX(), swapRect.centerY(), getWidthPixel()*.38f, mPaint);
             //画圆
             if (stateIndicator != null) {
                 stateIndicator.setLevel(level);
-                stateIndicator.setBounds(r);
+                stateIndicator.setBounds(swapRect);
                 stateIndicator.draw(c);
             }
 

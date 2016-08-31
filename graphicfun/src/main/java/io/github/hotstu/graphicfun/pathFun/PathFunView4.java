@@ -1,4 +1,4 @@
-package com.example.slab.customviewplayground.view;
+package io.github.hotstu.graphicfun.pathFun;
 
 import android.content.Context;
 import android.graphics.Canvas;
