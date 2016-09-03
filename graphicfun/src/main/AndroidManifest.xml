@@ -82,8 +82,17 @@
                 <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".ParticleTextActivity"
+        <activity
+            android:name=".ParticleTextActivity"
             android:label="Graphic/粒子字体">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FireworkActivity"
+            android:label="Graphic/粒子花火">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

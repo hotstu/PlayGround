@@ -16,10 +16,13 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import static io.github.hotstu.graphicfun.particleText.PContext.dist;
-import static io.github.hotstu.graphicfun.particleText.PContext.lerpColor;
-import static io.github.hotstu.graphicfun.particleText.PContext.min;
-import static io.github.hotstu.graphicfun.particleText.PContext.random;
+import io.github.hotstu.graphicfun.PContext;
+import io.github.hotstu.graphicfun.PVector;
+
+import static io.github.hotstu.graphicfun.PContext.dist;
+import static io.github.hotstu.graphicfun.PContext.lerpColor;
+import static io.github.hotstu.graphicfun.PContext.min;
+import static io.github.hotstu.graphicfun.PContext.random;
 
 /**
  * Created by hotstuNg on 2016/8/29.

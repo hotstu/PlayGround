@@ -1,4 +1,4 @@
-package io.github.hotstu.graphicfun.particleText;/* -*- mode: java; c-basic-offset: 2; indent-tabs-mode: nil -*- */
+package io.github.hotstu.graphicfun;/* -*- mode: java; c-basic-offset: 2; indent-tabs-mode: nil -*- */
 
 /*
   Part of the Processing project - http://processing.org
@@ -245,7 +245,7 @@ public class PVector implements Serializable {
      */
     static public PVector random2D(PVector target, PContext parent) {
         if (parent == null) return fromAngle((float)(Math.random()*Math.PI*2),target);
-        else                return fromAngle(parent.random(Constants.TWO_PI),target);
+        else                return fromAngle(parent.random(PContext.TWO_PI),target);
     }
 
     /**
@@ -295,7 +295,7 @@ public class PVector implements Serializable {
             angle = (float) (Math.random()*Math.PI*2);
             vz    = (float) (Math.random()*2-1);
         } else {
-            angle = parent.random(Constants.TWO_PI);
+            angle = parent.random(PContext.TWO_PI);
             vz    = parent.random(-1,1);
         }
         float vx = (float) (Math.sqrt(1-vz*vz)*Math.cos(angle));
@@ -937,7 +937,7 @@ public class PVector implements Serializable {
         // Otherwise if outside the range, acos() will return NaN
         // http://www.cppreference.com/wiki/c/math/acos
         if (amt <= -1) {
-            return Constants.PI;
+            return PContext.PI;
         } else if (amt >= 1) {
             // http://code.google.com/p/processing/issues/detail?id=435
             return 0;
