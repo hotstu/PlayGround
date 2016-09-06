@@ -89,6 +89,7 @@ public class ColorfullView extends View  {
         }
         Log.d(TAG, "onDraw: cost1 " + (SystemClock.elapsedRealtime() - start1));
         start1  = SystemClock.elapsedRealtime();
+        mBitmapPaint.setDither(false);
         canvas.drawBitmap(canvasBitmap,0, 0, mBitmapPaint);
         Log.d(TAG, "onDraw: cost2 " + (SystemClock.elapsedRealtime() - start1));
         if (!fireworks.isEmpty()) {
