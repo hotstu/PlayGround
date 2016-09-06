@@ -2,9 +2,11 @@ package io.github.hotstu.graphicfun.fireworks;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Shader;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.v4.view.GestureDetectorCompat;
@@ -30,6 +32,7 @@ public class ColorfullView extends View  {
     private Canvas bitmapCanvas;
     private GestureDetectorCompat mGesture;
     private Bitmap canvasBitmap;
+    private BitmapShader mBitmapShader;
 
     public ColorfullView(Context context) {
         super(context);
@@ -76,6 +79,8 @@ public class ColorfullView extends View  {
             canvasBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
             bitmapCanvas = new Canvas(canvasBitmap);
             bitmapCanvas.drawColor(Color.BLACK);
+            mBitmapShader = new BitmapShader(canvasBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            mBitmapPaint.setShader(mBitmapShader);
         }
         Log.d(TAG, "onDraw: cost0 " + (SystemClock.elapsedRealtime() - start1));
         start1  = SystemClock.elapsedRealtime();
@@ -90,7 +95,8 @@ public class ColorfullView extends View  {
         Log.d(TAG, "onDraw: cost1 " + (SystemClock.elapsedRealtime() - start1));
         start1  = SystemClock.elapsedRealtime();
         mBitmapPaint.setDither(false);
-        canvas.drawBitmap(canvasBitmap,0, 0, mBitmapPaint);
+        canvas.drawPaint(mBitmapPaint);
+        //canvas.drawBitmap(canvasBitmap,0, 0, mBitmapPaint);
         Log.d(TAG, "onDraw: cost2 " + (SystemClock.elapsedRealtime() - start1));
         if (!fireworks.isEmpty()) {
             //invalidate();
