@@ -66,8 +66,7 @@ public class ColorfullView extends View  {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        boolean val = mGesture.onTouchEvent(event);
-        return val;
+        return mGesture.onTouchEvent(event);
     }
 
     long counter = SystemClock.elapsedRealtime();
