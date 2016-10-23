@@ -72,7 +72,7 @@ public class ColorfullView extends View  {
     long counter = SystemClock.elapsedRealtime();
     @Override
     protected void onDraw(Canvas canvas) {
-        enableHardwareLayer(this);
+        //enableHardwareLayer(this);
         long start1  = SystemClock.elapsedRealtime();
         if (canvasBitmap == null || canvasBitmap.isRecycled()) {
             canvasBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
@@ -101,7 +101,7 @@ public class ColorfullView extends View  {
             //invalidate();
             ViewCompat.postInvalidateOnAnimation(this);
         } else {
-            disableHardwareLayers(this);
+            //disableHardwareLayers(this);
         }
         Log.d(TAG, "onDraw: elapsed: " + (SystemClock.elapsedRealtime() - counter));
         counter = SystemClock.elapsedRealtime();
