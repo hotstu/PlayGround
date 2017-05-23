@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/appglide/appglide.iml" filepath="$PROJECT_DIR$/appglide/appglide.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" filepath="$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/desionlib/desionlib.iml" filepath="$PROJECT_DIR$/desionlib/desionlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" filepath="$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphicfun/graphicfun.iml" filepath="$PROJECT_DIR$/graphicfun/graphicfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/labrecycler/labrecycler.iml" filepath="$PROJECT_DIR$/labrecycler/labrecycler.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_views/lib_views.iml" filepath="$PROJECT_DIR$/lib_views/lib_views.iml" />
