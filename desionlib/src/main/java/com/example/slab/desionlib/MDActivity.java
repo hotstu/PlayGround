@@ -5,6 +5,7 @@ import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,6 +19,8 @@ public class MDActivity extends AppCompatActivity {
         setContentView(R.layout.activity_md);
         content = findView(R.id.content);
         fab = findView(R.id.fab);
+        Toolbar toolbar = findView(R.id.toolbar);
+        setSupportActionBar(toolbar);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
