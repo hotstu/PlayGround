@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,22 +10,25 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="normal"
-            android:layout_gravity="bottom|end"
-            app:elevation="2dp"
-            app:srcCompat="@android:drawable/ic_dialog_email"
-            />
-        <!--
-        app:elevation 设置空闲高度
-        app:pressedTranslationZ 设置按下时的高度
-        app:backgroundTint 设置圆圈背景色 默认为accentColor
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        -->
-    </FrameLayout>
 
-</LinearLayout>
+    </FrameLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_anchor="@id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/codelab_fab_margin_right"
+        android:layout_marginBottom="@dimen/codelab_fab_margin_bottom"
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|end"
+        app:elevation="2dp"
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        />
+    <!--
+    app:elevation 设置空闲高度
+    app:pressedTranslationZ 设置按下时的高度
+    app:backgroundTint 设置圆圈背景色 默认为accentColor
+    app:layout_anchor="@id/app_bar"
+    app:layout_anchorGravity="bottom|end"
+    -->
+</android.support.design.widget.CoordinatorLayout>
