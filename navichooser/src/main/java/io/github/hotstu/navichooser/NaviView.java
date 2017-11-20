@@ -18,9 +18,6 @@ import io.github.hotstu.navichooser.navichooser.StateProcessProxy;
 import io.github.hotstu.navichooser.navichooser.StateProcessProxyImpl;
 import io.github.hotstu.navichooser.navichooser.ViewHolder;
 
-/**
- * Created by hotstuNg on 2016/9/7.
- */
 
 public class NaviView extends FrameLayout implements StateProcessProxy {
     StateProcessProxy delegate;

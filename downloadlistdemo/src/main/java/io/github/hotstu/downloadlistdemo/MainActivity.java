@@ -1,11 +1,13 @@
 package io.github.hotstu.downloadlistdemo;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,8 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.add)
     public void add() {
-        DownloadService.getDownloadManager(getApplication()).addNewDownload();
-        myAdapter.notifyDataSetChanged();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(getApplicationContext(), "toast from thread:" +Thread.currentThread().getName(), Toast.LENGTH_LONG).show();
+                Looper.loop();
+            }
+        }).start();
     }
 
     private class MyAdapter extends BaseAdapter {

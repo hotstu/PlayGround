@@ -1,3 +1,3 @@
-include ':dagger_databinding', ':appglide', ':labrecycler', ':lib_views', ':transtitions', ':propertyanim', ':materialanim', ':spanfun', ':desionlib', ':graphicfun', ':navichooser', ':downloadlistdemo'
+include ':dagger_databinding', ':appglide', ':labrecycler', ':lib_views', ':transtitions', ':propertyanim', ':materialanim', ':spanfun', ':desionlib', ':graphicfun', ':navichooser', ':downloadlistdemo', ':webviewtest'
 include ':moduleLoader'
 project(':moduleLoader').projectDir = new File('../ModuleLoader/moduleLoader')

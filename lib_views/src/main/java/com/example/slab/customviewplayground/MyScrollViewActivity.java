@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class MyScrollViewActivity extends AppCompatActivity {
             initlist(child, i);
             list_container.addView(child);
         }
+        ScrollView sv = null;
+
     }
 
     private void initlist(ViewGroup listLayout, int index) {

@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/propertyanim" />
             <option value="$PROJECT_DIR$/spanfun" />
             <option value="$PROJECT_DIR$/transtitions" />
+            <option value="$PROJECT_DIR$/webviewtest" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
