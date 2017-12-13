@@ -20,8 +20,8 @@
         </activity>
 
         <activity
-            android:name=".MyScrollViewActivity"
-            android:label="View/MyScrollViewActivity"
+            android:name=".ViewGroupGestrureViewActivity"
+            android:label="View/viewgroup手势处理"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
