@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="lfui_orientation" format="enum">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr>
+    <!--************** QMUIGroupListView **************-->
+    <declare-styleable name="LFUIGroupListView">
+        <attr name="lfui_separatorType" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="none" value="1"/>
+        </attr>
+    </declare-styleable>
+    <attr name="LFUIGroupListViewStyle" format="reference"/>
+    <attr name="LFUICommonListItemViewStyle" format="reference"/>
+    <declare-styleable name="LFUICommonListItemView">
+        <attr name="lfui_orientation"/>
+        <attr name="lfui_accessory_type" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="chevron" value="1"/>
+            <enum name="switcher" value="2"/>
+            <enum name="custom" value="3"/>
+        </attr>
+        <attr name="lfui_commonList_titleColor" format="color"/>
+        <attr name="lfui_commonList_detailColor" format="color"/>
+    </declare-styleable>
+    <attr name="LFUIGroupListSectionViewStyle" format="reference"/>
+</resources>

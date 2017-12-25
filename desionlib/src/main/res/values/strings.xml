@@ -97,4 +97,5 @@
     <string name="title_activity_scrolling2">design/ScrollingActivity2</string>
     <string name="title_activity_scrolling">design/ScrollingActivity1</string>
     <string name="title_activity_scrolling3">design/materialDesign最佳实践</string>
+    <string name="title_activity_scrolling4">design/nestedSrolling</string>
 </resources>

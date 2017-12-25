@@ -280,11 +280,15 @@ public class MyFrameLayout extends FrameLayout {
         invalidate();
     }
 
-    private void reset() {
+    private void resetInner() {
         mScroller.startScroll(0,  totalOffset, 0, (0-totalOffset));
         mIsRefreshing = false;
         mRefreshView.stop();
         invalidate();
+    }
+
+    public void reset() {
+        resetInner();
     }
 
     @Override
@@ -304,12 +308,18 @@ public class MyFrameLayout extends FrameLayout {
         mIsRefreshing = true;
         mRefreshView.doRefresh();
         Log.e(TAG, "trigger refresh event");
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                reset();
-            }
-        }, 2000);
+        if (this.mListener != null) {
+            this.mListener.onRefresh();
+        }
+    }
+
+    OnRefreshListener mListener;
+    public void setOnRefreshListener(OnRefreshListener l) {
+        this.mListener = l;
+    }
+
+    public interface OnRefreshListener {
+        void onRefresh();
     }
 
     //region deal with compat, copy from SwipRefreshLayout
