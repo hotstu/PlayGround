@@ -1,8 +1,5 @@
 package io.github.hotstu.downloadlistdemo;
 
-/**
- * Created by songwd on 2017/5/22.
- */
 
 public interface IDownloadManager {
 

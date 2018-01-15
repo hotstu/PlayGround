@@ -4,9 +4,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
-/**
- * Created by songwd on 2017/5/22.
- */
+
 @Entity
 public class DownloadInfo {
     @Id(autoincrement = true)

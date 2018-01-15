@@ -10,9 +10,6 @@ import android.util.Log;
 
 import java.util.List;
 
-/**
- * Created by songwd on 2017/5/22.
- */
 
 public class DownloadService extends Service {
     private static DownloadManager DOWNLOAD_MANAGER = null;

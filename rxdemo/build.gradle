@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion Integer.parseInt("${ANDROID_BUILD_SDK_VERSION}")
+    buildToolsVersion "${ANDROID_BUILD_TOOLS_VERSION}"
+
+
+    defaultConfig {
+        applicationId "io.github.hotstu.rxdemo"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
+    compile "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5'
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VERSION}"
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    // ViewModel and LiveData
+    implementation 'android.arch.lifecycle:extensions:1.0.0'
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
+    testCompile 'junit:junit:4.12'
+    implementation project(':moduleLoader')
+}

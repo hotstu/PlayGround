@@ -2,9 +2,6 @@ package io.github.hotstu.downloadlistdemo;
 
 import android.content.Context;
 
-/**
- * Created by songwd on 2017/5/22.
- */
 
 public class DownloadManager implements IDownloadManager{
     public DownloadManager(Context ctx) {

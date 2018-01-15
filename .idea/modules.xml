@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MDStudySamples/MDStudySamples.iml" filepath="$PROJECT_DIR$/MDStudySamples/MDStudySamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayGround.iml" filepath="$PROJECT_DIR$/PlayGround.iml" />
       <module fileurl="file://$PROJECT_DIR$/appglide/appglide.iml" filepath="$PROJECT_DIR$/appglide/appglide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/archcomponent/archcomponent.iml" filepath="$PROJECT_DIR$/archcomponent/archcomponent.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" filepath="$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/desionlib/desionlib.iml" filepath="$PROJECT_DIR$/desionlib/desionlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" filepath="$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" />
@@ -13,12 +14,12 @@
       <module fileurl="file://$PROJECT_DIR$/labrecycler/labrecycler.iml" filepath="$PROJECT_DIR$/labrecycler/labrecycler.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_views/lib_views.iml" filepath="$PROJECT_DIR$/lib_views/lib_views.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialanim/materialanim.iml" filepath="$PROJECT_DIR$/materialanim/materialanim.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" filepath="$PROJECT_DIR$/../ModuleLoader/moduleLoader/moduleLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moduleLoader/moduleLoader.iml" filepath="$PROJECT_DIR$/moduleLoader/moduleLoader.iml" />
       <module fileurl="file://$PROJECT_DIR$/navichooser/navichooser.iml" filepath="$PROJECT_DIR$/navichooser/navichooser.iml" />
       <module fileurl="file://$PROJECT_DIR$/propertyanim/propertyanim.iml" filepath="$PROJECT_DIR$/propertyanim/propertyanim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxdemo/rxdemo.iml" filepath="$PROJECT_DIR$/rxdemo/rxdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spanfun/spanfun.iml" filepath="$PROJECT_DIR$/spanfun/spanfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/transtitions/transtitions.iml" filepath="$PROJECT_DIR$/transtitions/transtitions.iml" />
-      <module fileurl="file://$PROJECT_DIR$/uikit/uikit.iml" filepath="$PROJECT_DIR$/uikit/uikit.iml" />
       <module fileurl="file://$PROJECT_DIR$/webviewtest/webviewtest.iml" filepath="$PROJECT_DIR$/webviewtest/webviewtest.iml" />
     </modules>
   </component>

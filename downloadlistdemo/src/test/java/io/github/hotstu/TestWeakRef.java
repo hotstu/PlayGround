@@ -2,9 +2,6 @@ package io.github.hotstu;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by songwd on 2017/6/2.
- */
 
 public class TestWeakRef {
     @org.junit.Test

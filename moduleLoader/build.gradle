@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion Integer.parseInt("${ANDROID_BUILD_SDK_VERSION}")
+    buildToolsVersion "${ANDROID_BUILD_TOOLS_VERSION}"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile "com.android.support:recyclerview-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
+    compileOnly 'com.squareup.okhttp3:okhttp:3.8.0'
+    compileOnly 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compileOnly 'io.reactivex.rxjava2:rxjava:2.1.8'
+    compileOnly "com.google.code.gson:gson:${GSON_VERSION}"
+
+}

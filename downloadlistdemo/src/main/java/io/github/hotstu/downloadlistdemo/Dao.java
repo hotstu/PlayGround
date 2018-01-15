@@ -5,10 +5,6 @@ import android.content.Context;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
-/**
- * Created by songwd on 2017/5/23.
- */
-
 public class Dao {
     private static final boolean ENCRYPTED = false;
     private static Dao sInstance;
