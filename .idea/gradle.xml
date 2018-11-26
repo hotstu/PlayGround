@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/archcomponent" />
             <option value="$PROJECT_DIR$/dagger_databinding" />
             <option value="$PROJECT_DIR$/desionlib" />
+            <option value="$PROJECT_DIR$/dialogfun" />
             <option value="$PROJECT_DIR$/downloadlistdemo" />
             <option value="$PROJECT_DIR$/graphicfun" />
             <option value="$PROJECT_DIR$/hellokotlin" />
@@ -25,6 +26,8 @@
             <option value="$PROJECT_DIR$/rxdemo" />
             <option value="$PROJECT_DIR$/spanfun" />
             <option value="$PROJECT_DIR$/transtitions" />
+            <option value="$PROJECT_DIR$/unrealsever" />
+            <option value="$PROJECT_DIR$/vectorydrawable_demo" />
             <option value="$PROJECT_DIR$/webviewtest" />
           </set>
         </option>

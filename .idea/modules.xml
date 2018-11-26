@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/archcomponent/archcomponent.iml" filepath="$PROJECT_DIR$/archcomponent/archcomponent.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" filepath="$PROJECT_DIR$/dagger_databinding/dagger_databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/desionlib/desionlib.iml" filepath="$PROJECT_DIR$/desionlib/desionlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dialogfun/dialogfun.iml" filepath="$PROJECT_DIR$/dialogfun/dialogfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" filepath="$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphicfun/graphicfun.iml" filepath="$PROJECT_DIR$/graphicfun/graphicfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/hellokotlin/hellokotlin.iml" filepath="$PROJECT_DIR$/hellokotlin/hellokotlin.iml" />
@@ -20,6 +21,8 @@
       <module fileurl="file://$PROJECT_DIR$/rxdemo/rxdemo.iml" filepath="$PROJECT_DIR$/rxdemo/rxdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spanfun/spanfun.iml" filepath="$PROJECT_DIR$/spanfun/spanfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/transtitions/transtitions.iml" filepath="$PROJECT_DIR$/transtitions/transtitions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unrealsever/unrealsever.iml" filepath="$PROJECT_DIR$/unrealsever/unrealsever.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vectorydrawable_demo/vectorydrawable_demo.iml" filepath="$PROJECT_DIR$/vectorydrawable_demo/vectorydrawable_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/webviewtest/webviewtest.iml" filepath="$PROJECT_DIR$/webviewtest/webviewtest.iml" />
     </modules>
   </component>

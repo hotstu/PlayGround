@@ -2,6 +2,7 @@ package io.github.hotstu.archcomponent;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModelProviders;
@@ -12,9 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import io.github.hotstu.archcomponent.db.AppDatabase;
+import io.github.hotstu.archcomponent.db.UserDao;
+import io.github.hotstu.archcomponent.db.UserEntity;
+
+public class MainActivity extends AppCompatActivity implements Observer<Object> {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        userDao = AppDatabase.getInMemoryDatabase(getApplicationContext()).UserModel();
+
     }
 
 
@@ -62,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        LiveBus.getInstance().observe(this, this);
+        LiveData<UserEntity> user = userDao.findUserById(1);
+        user.observe(this, new Observer<UserEntity>() {
+            @Override
+            public void onChanged(@Nullable UserEntity userEntity) {
+                Log.d(TAG, "user  onChanged" );
+            }
+        });
         Log.d(TAG, "activity onStart");
     }
 
@@ -77,5 +93,16 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         Log.d(TAG, "activity onSaveInstanceState");
 
+    }
+
+    public void test(View view) {
+        //LiveBus.getInstance().setValue("test");
+        UserEntity user = new UserEntity(0, "user");
+        userDao.addUser(user);
+    }
+
+    @Override
+    public void onChanged(@Nullable Object o) {
+        Log.e(TAG, "LiveBus onChanged");
     }
 }

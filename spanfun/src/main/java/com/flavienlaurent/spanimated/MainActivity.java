@@ -5,13 +5,14 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Color;
 import android.graphics.EmbossMaskFilter;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.chip.ChipDrawable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -48,7 +49,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private static String ANIMATED_WORD = "Im gonna be Animated!";
 
@@ -187,7 +188,7 @@ public class MainActivity extends Activity {
     }
 
     private void reset() {
-        for(Object span : mSpans) {
+        for (Object span : mSpans) {
             mBaconIpsumSpannableString.removeSpan(span);
             mActionBarTitleSpannableString.removeSpan(span);
         }
@@ -197,7 +198,9 @@ public class MainActivity extends Activity {
         setTitle(mActionBarTitleSpannableString);
     }
 
-    enum SpanType {BULLET, QUOTE, UNDERLINE, STRIKETHROUGH, BGCOLOR, FGCOLOR, MASKFILTER_EMBOSS, SUBSCRIPT, STYLE, ABSOLUTE_SIZE_SPAN, RELATIVE_SIZE_SPAN, TEXTAPPEARANCE_SPAN, SUPERSCRIPT, LOCALE_SPAN, SCALEX_SPAN, TYPEFACE_SPAN, IMAGE_SPAN, MASKFILTER_BLUR, ALIGNMENT_STANDARD};
+    enum SpanType {BULLET, QUOTE, UNDERLINE, STRIKETHROUGH, BGCOLOR, FGCOLOR, MASKFILTER_EMBOSS, SUBSCRIPT, STYLE, ABSOLUTE_SIZE_SPAN, RELATIVE_SIZE_SPAN, TEXTAPPEARANCE_SPAN, SUPERSCRIPT, LOCALE_SPAN, SCALEX_SPAN, TYPEFACE_SPAN, IMAGE_SPAN, MASKFILTER_BLUR, ALIGNMENT_STANDARD, CHIP}
+
+    ;
 
     private void spanIt() {
         float density = getResources().getDisplayMetrics().density;
@@ -205,7 +208,7 @@ public class MainActivity extends Activity {
         Object span = null;
         int allTextStart = 0;
         int allTextEnd = mBaconIpsum.length() - 1;
-        switch((SpanType)mSpinner.getSelectedItem()) {
+        switch ((SpanType) mSpinner.getSelectedItem()) {
             case BULLET:
                 span = new BulletSpan(15, Color.BLACK);
                 mBaconIpsumSpannableString.setSpan(span, allTextStart, allTextEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -235,11 +238,11 @@ public class MainActivity extends Activity {
                 mBaconIpsumSpannableString.setSpan(span, wordPosition.start, wordPosition.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 break;
             case MASKFILTER_BLUR:
-                span = new MaskFilterSpan(new BlurMaskFilter(density*2, BlurMaskFilter.Blur.NORMAL));
+                span = new MaskFilterSpan(new BlurMaskFilter(density * 2, BlurMaskFilter.Blur.NORMAL));
                 mBaconIpsumSpannableString.setSpan(span, wordPosition.start, wordPosition.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 break;
             case MASKFILTER_EMBOSS:
-                span = new MaskFilterSpan(new EmbossMaskFilter(new float[] { 1, 1, 1 }, 0.4f, 6, 3.5f));
+                span = new MaskFilterSpan(new EmbossMaskFilter(new float[]{1, 1, 1}, 0.4f, 6, 3.5f));
                 ForegroundColorSpan fg = new ForegroundColorSpan(Color.BLUE);
                 StyleSpan style = new StyleSpan(Typeface.BOLD);
 
@@ -290,8 +293,15 @@ public class MainActivity extends Activity {
                 span = new ImageSpan(this, R.drawable.pic1_small);
                 mBaconIpsumSpannableString.setSpan(span, wordPosition.start, wordPosition.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 break;
+            case CHIP:
+                // Inflate from resources.
+                ChipDrawable chip = ChipDrawable.createFromResource(this, R.xml.standalone_chip);
+                chip.setBounds(0, 0, chip.getIntrinsicWidth(), chip.getIntrinsicHeight());
+                span = new ImageSpan(chip);
+                mBaconIpsumSpannableString.setSpan(span, wordPosition.start, wordPosition.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                break;
         }
-        if(span == null) {
+        if (span == null) {
             return;
         }
         mSpans.add(span);
@@ -396,7 +406,7 @@ public class MainActivity extends Activity {
 
     private void animateActionBarBlur() {
         float density = getResources().getDisplayMetrics().density;
-        float maxRadius = density*8;
+        float maxRadius = density * 8;
         MutableBlurMaskFilterSpan span = new MutableBlurMaskFilterSpan(maxRadius);
         mSpans.add(span);
 
@@ -438,7 +448,7 @@ public class MainActivity extends Activity {
 
     private TypeWriterSpanGroup buildTypeWriterSpanGroup(int start, int end) {
         final TypeWriterSpanGroup group = new TypeWriterSpanGroup(0);
-        for(int index = start ; index <= end ; index++) {
+        for (int index = start; index <= end; index++) {
             MutableForegroundColorSpan span = new MutableForegroundColorSpan(0, Color.BLACK);
             mSpans.add(span);
             group.addSpan(span);
@@ -449,7 +459,7 @@ public class MainActivity extends Activity {
 
     private FireworksSpanGroup buildFireworksSpanGroup(int start, int end) {
         final FireworksSpanGroup group = new FireworksSpanGroup();
-        for(int index = start ; index <= end ; index++) {
+        for (int index = start; index <= end; index++) {
             MutableForegroundColorSpan span = new MutableForegroundColorSpan(0, Color.WHITE);
             mSpans.add(span);
             group.addSpan(span);
@@ -488,12 +498,12 @@ public class MainActivity extends Activity {
             int size = mSpans.size();
             float total = 1.0f * size * progress;
 
-            if(DEBUG) Log.d(TAG, "progress " + progress + " * 1.0f * size => " + total);
+            if (DEBUG) Log.d(TAG, "progress " + progress + " * 1.0f * size => " + total);
 
-            for(int index = 0 ; index < size; index++) {
+            for (int index = 0; index < size; index++) {
                 MutableForegroundColorSpan span = mSpans.get(index);
 
-                if(total >= 1.0f) {
+                if (total >= 1.0f) {
                     span.setAlpha(255);
                     total -= 1.0f;
                 } else {
@@ -545,12 +555,12 @@ public class MainActivity extends Activity {
             int size = mSpans.size();
             float total = 1.0f * size * alpha;
 
-            if(DEBUG) Log.d(TAG, "alpha " + alpha + " * 1.0f * size => " + total);
+            if (DEBUG) Log.d(TAG, "alpha " + alpha + " * 1.0f * size => " + total);
 
-            for(int index = 0 ; index < size; index++) {
+            for (int index = 0; index < size; index++) {
                 MutableForegroundColorSpan span = mSpans.get(index);
 
-                if(total >= 1.0f) {
+                if (total >= 1.0f) {
                     span.setAlpha(255);
                     total -= 1.0f;
                 } else {
@@ -558,7 +568,7 @@ public class MainActivity extends Activity {
                     total = 0.0f;
                 }
 
-                if(DEBUG) Log.d(TAG, "alpha span(" + index + ") => " + alpha);
+                if (DEBUG) Log.d(TAG, "alpha span(" + index + ") => " + alpha);
             }
         }
 

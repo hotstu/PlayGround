@@ -38,6 +38,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
     compile "com.android.support:appcompat-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
-    compile project(':moduleLoader')
     compile 'com.google.dagger:dagger:2.5'
 }

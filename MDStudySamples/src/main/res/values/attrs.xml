@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BelowOfBehavior" >
+        <attr name="belowTo" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="GrowPaddingWithOffsetBehavior" >
+        <attr name="target" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="MyBottomSheetBehavior" >
+        <attr name="behavior_shrinkHeight" format="dimension" />
+    </declare-styleable>
+</resources>

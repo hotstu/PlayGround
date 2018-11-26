@@ -7,10 +7,15 @@
 
 <body class="body_bg_color">
 <input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+<input type="button" value="Say hello" onClick="prompt1()" />
 
 <script type="text/javascript">
     function showAndroidToast(toast) {
         test.showToast(toast);
+    }
+
+    function prompt1() {
+        window.prompt("hello, world")
     }
 </script>
 </body>

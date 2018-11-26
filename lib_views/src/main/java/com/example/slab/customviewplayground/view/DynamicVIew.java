@@ -94,7 +94,7 @@ public class DynamicVIew extends View {
             AnimInfo temp = animatorAnimiInfoEntry.getValue();
             if (temp.postion != null) {
                 mPaint.setColor(Color.BLUE);
-                canvas.drawRect(temp.postion, mPaint);
+                //canvas.drawRect(temp.postion, mPaint);
 
                 mTextPaint.setTextSize(temp.drawTextSize);
                 mTextPaint.setColor(temp.textColor);

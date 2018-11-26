@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion Integer.parseInt("${ANDROID_BUILD_SDK_VERSION}")

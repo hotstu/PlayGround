@@ -11,7 +11,8 @@ public class DynamicViewActivity extends AppCompatActivity {
 
     private DynamicVIew dynamicVIew;
     private View textView;
-
+    private String[] crappy = {"富强","民主","文明"," 和谐"," 自由","平等","公正","法治","爱国","敬业","诚信","友善"};
+    private int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class DynamicViewActivity extends AppCompatActivity {
     }
 
     public void xu10(View view) {
-        dynamicVIew.inspect(view, "+10s");
+        dynamicVIew.inspect(view, crappy[count]);
+        count = (count + 1)% crappy.length;
     }
 }

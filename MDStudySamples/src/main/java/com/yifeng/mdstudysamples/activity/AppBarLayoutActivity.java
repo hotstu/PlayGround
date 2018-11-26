@@ -25,7 +25,6 @@ public class AppBarLayoutActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_bar_layout);
-
         mContentRv = (RecyclerView) findViewById(R.id.rv_content);
         mContentRv.setLayoutManager(new LinearLayoutManager(this));
         mContentRv.setAdapter(new ContentAdapter());
