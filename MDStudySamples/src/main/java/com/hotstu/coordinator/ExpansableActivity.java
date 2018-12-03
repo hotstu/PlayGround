@@ -21,8 +21,6 @@ public class ExpansableActivity extends AppCompatActivity {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 Log.d("s", "1--" + newState);
-
-
             }
 
             @Override
