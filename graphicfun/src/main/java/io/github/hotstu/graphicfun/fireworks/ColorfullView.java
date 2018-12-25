@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Shader;
-import android.os.Build;
 import android.os.SystemClock;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
@@ -107,17 +106,5 @@ public class ColorfullView extends View  {
         counter = SystemClock.elapsedRealtime();
     }
 
-    // Enable hardware layer when transform pages
-    private void enableHardwareLayer(final View v) {
-        final int layerType = Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT ?
-                View.LAYER_TYPE_NONE : View.LAYER_TYPE_HARDWARE;
-        if (v.getLayerType() != layerType) v.setLayerType(layerType, null);
-    }
 
-    // Disable hardware layer when idle
-    private void disableHardwareLayers(final View v) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) return;
-        if (v.getLayerType() != View.LAYER_TYPE_NONE)
-            v.setLayerType(View.LAYER_TYPE_NONE, null);
-    }
 }

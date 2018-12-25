@@ -2,10 +2,13 @@ package io.github.hotstu.graphicfun.particleText;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.support.v4.view.ViewCompat;
 import android.text.TextPaint;
@@ -16,13 +19,13 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.github.hotstu.graphicfun.PContext;
 import io.github.hotstu.graphicfun.PVector;
 
 import static io.github.hotstu.graphicfun.PContext.dist;
 import static io.github.hotstu.graphicfun.PContext.lerpColor;
 import static io.github.hotstu.graphicfun.PContext.min;
 import static io.github.hotstu.graphicfun.PContext.random;
+
 
 /**
  * Created by hotstuNg on 2016/8/29.
@@ -35,10 +38,11 @@ public class ParticleTextView extends View {
     private Paint mParticlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     ArrayList<Particle> particles = new ArrayList<>();
     int pixelSteps = 6; // Amount of pixels to skip
-    ArrayList<String> words = new ArrayList<>();
-    int wordIndex = 0;
     private float scaleX;
     private float scaleY;
+    private Bitmap canvasBitmap;
+    private Paint mBitmapPaint;
+    private Canvas bitmapCanvas;
 
     //
     class Particle {
@@ -110,7 +114,7 @@ public class ParticleTextView extends View {
                 this.target.y = randomPos.y;
 
                 // Begin blending its color to black
-                this.startColor = PContext.lerpColor(this.startColor, this.targetColor, this.colorWeight);
+                this.startColor = lerpColor(this.startColor, this.targetColor, this.colorWeight);
                 this.targetColor = Color.BLACK;
                 this.colorWeight = 0;
 
@@ -243,15 +247,26 @@ public class ParticleTextView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.save();
-        canvas.scale(scaleX, scaleY);
+
+        if (canvasBitmap == null || canvasBitmap.isRecycled()) {
+            canvasBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+            bitmapCanvas = new Canvas(canvasBitmap);
+            BitmapShader mBitmapShader = new BitmapShader(canvasBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            mBitmapPaint = new Paint();
+            mBitmapPaint.setShader(mBitmapShader);
+            //mBitmapPaint.setDither(false);
+        }
+        bitmapCanvas.drawColor(Color.WHITE, PorterDuff.Mode.CLEAR);
+        bitmapCanvas.save();
+        bitmapCanvas.scale(scaleX, scaleY);
+
         int total = particles.size();
         int reached = 0;
         for (int x = particles.size ()-1; x > -1; x--) {
             // Simulate and draw pixels
             Particle particle = particles.get(x);
             particle.move();
-            particle.draw(canvas);
+            particle.draw(bitmapCanvas);
             reached += particle.reached()? 1: 0;
             // Remove any dead pixels out of bounds
             if (particle.isKilled) {
@@ -260,7 +275,9 @@ public class ParticleTextView extends View {
                 }
             }
         }
-        canvas.restore();
+        bitmapCanvas.restore();
+        canvas.drawPaint(mBitmapPaint);
+
         if (!isDetached && total > reached) {
             ViewCompat.postInvalidateOnAnimation(this);
         }

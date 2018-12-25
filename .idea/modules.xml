@@ -21,7 +21,6 @@
       <module fileurl="file://$PROJECT_DIR$/rxdemo/rxdemo.iml" filepath="$PROJECT_DIR$/rxdemo/rxdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spanfun/spanfun.iml" filepath="$PROJECT_DIR$/spanfun/spanfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/transtitions/transtitions.iml" filepath="$PROJECT_DIR$/transtitions/transtitions.iml" />
-      <module fileurl="file://$PROJECT_DIR$/unrealsever/unrealsever.iml" filepath="$PROJECT_DIR$/unrealsever/unrealsever.iml" />
       <module fileurl="file://$PROJECT_DIR$/vectorydrawable_demo/vectorydrawable_demo.iml" filepath="$PROJECT_DIR$/vectorydrawable_demo/vectorydrawable_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/webviewtest/webviewtest.iml" filepath="$PROJECT_DIR$/webviewtest/webviewtest.iml" />
     </modules>

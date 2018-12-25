@@ -28,6 +28,7 @@ class Firework {
     }
 
     boolean firstExplode = false;
+
     void run(Canvas canvas, Paint paint) {
         if (firework != null) {
             firework.applyForce(gravity);
