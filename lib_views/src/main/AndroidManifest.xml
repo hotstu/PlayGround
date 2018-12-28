@@ -95,8 +95,17 @@
                 <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".CenterPaddingTextViewActivity"
+        <activity
+            android:name=".CenterPaddingTextViewActivity"
             android:label="View/CenterTextView with padding left">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Main3Activity"
+            android:label="View/TextPath">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

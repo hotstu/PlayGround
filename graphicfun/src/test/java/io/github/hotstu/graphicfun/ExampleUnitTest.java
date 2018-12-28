@@ -2,7 +2,7 @@ package io.github.hotstu.graphicfun;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import io.github.hotstu.graphicfun.parlin.SimplexNoise;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
@@ -10,6 +10,9 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(SimplexNoise.noise(10, i*0.01));
+
+        }
     }
 }

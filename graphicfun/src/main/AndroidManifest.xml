@@ -100,8 +100,17 @@
                 <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".AStarActivity"
+        <activity
+            android:name=".AStarActivity"
             android:label="Graphic/A*算法演示">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.jakewharton.nineoldandroids.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".parlin.Main2Activity"
+            android:label="Graphic/云朵效果">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
