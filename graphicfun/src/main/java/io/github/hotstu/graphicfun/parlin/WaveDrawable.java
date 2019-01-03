@@ -24,6 +24,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
  * @since 2018/12/26
  */
 public class WaveDrawable extends Drawable implements Progressable, Animatable {
+
     @Retention(SOURCE)
     @IntDef({LEFT, TOP, RIGHT, BOTTOM})
     public @interface Direction {
@@ -36,25 +37,36 @@ public class WaveDrawable extends Drawable implements Progressable, Animatable {
 
     private final Paint mPaint;
     private Path mWavePath;
-    private float waveHight;
+    private float waveHeight;
+    private float waveStrength;
+    private float waveSpeed;
+
     private float dt;
     private float mProgress;
     private boolean running;
-    private @Direction int direction;
+    private @Direction
+    int direction;
 
 
     public WaveDrawable() {
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL);
-        waveHight = -1;
+        waveHeight = -1;
+        waveStrength = 0.01f;
         mWavePath = new Path();
+        waveSpeed = 0.05f;
         dt = 0;
+        direction = TOP;
     }
 
 
     public void setColor(@ColorInt int color) {
         mPaint.setColor(color);
         invalidateSelf();
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 
     public void setProgress(@FloatRange(from = 0.0, to = 1.0) float progress) {
@@ -70,13 +82,13 @@ public class WaveDrawable extends Drawable implements Progressable, Animatable {
 
 
     /**
-     * 设置波峰高度，px
+     * 设置波峰高度，px,默认为height * .05f
      *
-     * @param waveHight
+     * @param waveHeight
      */
-    public void setWaveHight(float waveHight) {
-        if (this.waveHight != waveHight) {
-            this.waveHight = waveHight;
+    public void setWaveHeight(float waveHeight) {
+        if (this.waveHeight != waveHeight) {
+            this.waveHeight = waveHeight;
             invalidateSelf();
         }
     }
@@ -84,20 +96,31 @@ public class WaveDrawable extends Drawable implements Progressable, Animatable {
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
-        if (waveHight < 0) {
-            waveHight = bounds.height() * .05f;
+        if (waveHeight < 0) {
+            waveHeight = bounds.height() * .05f;
         }
     }
 
     /**
-     * 设置波浪强度 数值越大波浪运动越快
+     * 设置波浪强度 数值越大单位区域内峰谷越多,默认0.01f
      * 默认0.05f
      *
-     * @param waveHight
+     * @param waveStrength
      */
-    public void setWaveStrenth(float waveHight) {
-        if (this.waveHight != waveHight) {
-            this.waveHight = waveHight;
+    public void setWaveStrength(float waveStrength) {
+        if (this.waveStrength != waveStrength) {
+            this.waveStrength = waveStrength;
+            invalidateSelf();
+        }
+    }
+
+    /**
+     * 设置波浪速度 数值越大波浪变化越快,默认0.05f
+     * @param speed
+     */
+    public void setWaveSpeed(float speed) {
+        if (this.waveSpeed != speed) {
+            this.waveSpeed = speed;
             invalidateSelf();
         }
     }
@@ -105,29 +128,112 @@ public class WaveDrawable extends Drawable implements Progressable, Animatable {
 
     @Override
     public void draw(@NonNull Canvas canvas) {
-        System.out.println("draw");
+        //System.out.println("draw");
+        switch (direction) {
+            case LEFT:
+                drawLeft(canvas);
+                break;
+            case TOP:
+                drawTop(canvas);
+                break;
+            case RIGHT:
+                drawRight(canvas);
+                break;
+            case BOTTOM:
+                drawBottom(canvas);
+                break;
+        }
+        if (running) {
+            invalidateSelf();
+        }
+
+    }
+
+
+    private void drawLeft(Canvas canvas) {
         Rect bounds = getBounds();
         int height = bounds.height();
         int width = bounds.width();
         float xoff = 0f;
         mWavePath.rewind();
-        float waveBias = height * (1 - mProgress) + waveHight * (1 - mProgress) - waveHight * (mProgress);
+        float waveBias = width * (1 - mProgress) + waveHeight * (1 - mProgress) - waveHeight * (mProgress);
+        //float waveBias = 400;
+        for (int i = 0; i <= 320; i += 1) {
+            double noise = SimplexNoise.noise(dt, xoff);
+            mWavePath.lineTo(
+                    map((float) noise, 0, 1, waveBias, waveBias + waveHeight),
+                    map(i, 0, 320, 0, height));
+            xoff += waveStrength;
+        }
+        dt += waveSpeed;
+        mWavePath.lineTo(width, height);
+        mWavePath.lineTo(width, 0);
+        mWavePath.close();
+        canvas.drawPath(mWavePath, mPaint);
+    }
+
+    private void drawTop(@NonNull Canvas canvas) {
+        Rect bounds = getBounds();
+        int height = bounds.height();
+        int width = bounds.width();
+        float xoff = 0f;
+        mWavePath.rewind();
+        float waveBias = height * (1 - mProgress) + waveHeight * (1 - mProgress) - waveHeight * (mProgress);
         //float waveBias = 400;
         for (int i = 0; i <= 320; i += 1) {
             double noise = SimplexNoise.noise(dt, xoff);
             mWavePath.lineTo(map(i, 0, 320, 0, width),
-                    map((float) noise, 0, 1, waveBias, waveBias + waveHight));
-            xoff += 0.01f;
+                    map((float) noise, 0, 1, waveBias, waveBias + waveHeight));
+            xoff += waveStrength;
         }
-        dt += 0.05f;
+        dt += waveSpeed;
         mWavePath.lineTo(width, height);
         mWavePath.lineTo(0, height);
         mWavePath.close();
         canvas.drawPath(mWavePath, mPaint);
-        if (running) {
-            invalidateSelf();
-        }
+    }
 
+    private void drawRight(@NonNull Canvas canvas) {
+        Rect bounds = getBounds();
+        int height = bounds.height();
+        int width = bounds.width();
+        float xoff = 0f;
+        mWavePath.rewind();
+        float waveBias = width * (mProgress) + waveHeight * (mProgress) - waveHeight * (1 - mProgress);
+        //float waveBias = 400;
+        for (int i = 0; i <= 320; i += 1) {
+            double noise = SimplexNoise.noise(dt, xoff);
+            mWavePath.lineTo(
+                    map((float) noise, 0, 1, waveBias, waveBias + waveHeight),
+                    map(i, 0, 320, 0, height));
+            xoff += waveStrength;
+        }
+        dt += waveSpeed;
+        mWavePath.lineTo(0, height);
+        mWavePath.lineTo(0, 0);
+        mWavePath.close();
+        canvas.drawPath(mWavePath, mPaint);
+    }
+
+    private void drawBottom(Canvas canvas) {
+        Rect bounds = getBounds();
+        int height = bounds.height();
+        int width = bounds.width();
+        float xoff = 0f;
+        mWavePath.rewind();
+        float waveBias = height * (mProgress) + waveHeight * (mProgress) - waveHeight * (1 - mProgress);
+        //float waveBias = 400;
+        for (int i = 0; i <= 320; i += 1) {
+            double noise = SimplexNoise.noise(dt, xoff);
+            mWavePath.lineTo(map(i, 0, 320, 0, width),
+                    map((float) noise, 0, 1, waveBias, waveBias + waveHeight));
+            xoff += waveStrength;
+        }
+        dt += waveSpeed;
+        mWavePath.lineTo(width, 0);
+        mWavePath.lineTo(0, 0);
+        mWavePath.close();
+        canvas.drawPath(mWavePath, mPaint);
     }
 
 

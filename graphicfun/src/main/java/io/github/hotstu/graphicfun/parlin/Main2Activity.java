@@ -15,15 +15,21 @@ public class Main2Activity extends AppCompatActivity {
 
     private ValueAnimator valueAnimator;
     private WaveDrawable background;
+    private WaveDrawable background2;
+    private ExpandingBarDrawable background3;
+    private WaveDrawable background4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         background = new WaveDrawable();
-        final WaveDrawable background2 = new CircleWaveDrawable();
-        final ExpandingBarDrawable background3 = new ExpandingBarDrawable();
-        final horizontalWaveDrawable background4 = new horizontalWaveDrawable();
+        background.setWaveStrength(.05f);
+        background2 = new CircleWaveDrawable();
+        background2.setWaveSpeed(.1f);
+        background3 = new ExpandingBarDrawable();
+        background4 = new WaveDrawable();
+        background4.setDirection(WaveDrawable.RIGHT);
         background.setColor(Color.parseColor("#90CAF9"));
         background2.setColor(Color.parseColor("#90CAF9"));
         background3.setColor(Color.parseColor("#90CAF9"));
@@ -89,8 +95,12 @@ public class Main2Activity extends AppCompatActivity {
     public void animate(View view) {
         if (background.isRunning()) {
             background.stop();
+            background2.stop();
+            background4.stop();
         } else {
             background.start();
+            background2.start();
+            background4.start();
         }
     }
 }
