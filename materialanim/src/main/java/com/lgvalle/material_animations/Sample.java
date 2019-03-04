@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Sample implements Serializable {
 
-    final int color;
+    final @ColorRes int color;
     private final String name;
 
     public Sample(@ColorRes int color, String name) {

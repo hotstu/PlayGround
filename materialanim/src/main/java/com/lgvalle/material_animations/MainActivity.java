@@ -1,7 +1,6 @@
 package com.lgvalle.material_animations;
 
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupSamples() {
         samples = Arrays.asList(
-                new Sample(ContextCompat.getColor(this, R.color.sample_red), "Transitions"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared Elements"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Animation")
+                new Sample(R.color.sample_red, "Transitions"),
+                new Sample(R.color.sample_blue, "Shared Elements"),
+                new Sample(R.color.sample_green, "View animations"),
+                new Sample(R.color.sample_yellow, "Circular Reveal Animation")
         );
     }
 

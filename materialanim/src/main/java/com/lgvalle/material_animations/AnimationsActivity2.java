@@ -43,7 +43,7 @@ public class AnimationsActivity2 extends BaseDetailActivity {
 
     private void setupWindowAnimations() {
         getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(
-                R.transition.slide_from_bottom));
+                R.transition.changebounds_with_arcmotion));
         getWindow().getEnterTransition().addListener(new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
