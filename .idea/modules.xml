@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PlayGround.iml" filepath="$PROJECT_DIR$/PlayGround.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customtab/customtab.iml" filepath="$PROJECT_DIR$/customtab/customtab.iml" />
       <module fileurl="file://$PROJECT_DIR$/ipcdemo/ipcdemo.iml" filepath="$PROJECT_DIR$/ipcdemo/ipcdemo.iml" />
     </modules>
   </component>
