@@ -2,8 +2,8 @@ package com.example.slab.appglide;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.slab.appglide.dagger.AppComponet;
 import com.example.slab.appglide.dagger.AppModule;

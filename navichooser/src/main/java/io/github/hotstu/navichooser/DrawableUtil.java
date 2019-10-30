@@ -2,7 +2,7 @@ package io.github.hotstu.navichooser;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 
 

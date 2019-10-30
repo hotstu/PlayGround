@@ -1,9 +1,9 @@
 package com.yifeng.mdstudysamples.behavior;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar.SnackbarLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar.SnackbarLayout;
 import android.util.AttributeSet;
 import android.view.View;
 

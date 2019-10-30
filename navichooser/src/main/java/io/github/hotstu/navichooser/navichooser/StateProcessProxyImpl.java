@@ -4,7 +4,7 @@ package io.github.hotstu.navichooser.navichooser;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.support.v4.util.LruCache;
+import androidx.collection.LruCache;
 import android.util.Log;
 import android.view.View;
 

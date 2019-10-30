@@ -1,7 +1,7 @@
 package io.github.hotstu.archcomponent.paging;
 
-import android.arch.paging.PositionalDataSource;
-import android.support.annotation.NonNull;
+import androidx.paging.PositionalDataSource;
+import androidx.annotation.NonNull;
 
 import com.example.slab.loader.logger.Log;
 

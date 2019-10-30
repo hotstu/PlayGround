@@ -3,18 +3,37 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/MDStudySamples" />
+            <option value="$PROJECT_DIR$/appglide" />
+            <option value="$PROJECT_DIR$/archcomponent" />
+            <option value="$PROJECT_DIR$/customtab" />
+            <option value="$PROJECT_DIR$/dagger_databinding" />
+            <option value="$PROJECT_DIR$/desionlib" />
+            <option value="$PROJECT_DIR$/dialogfun" />
+            <option value="$PROJECT_DIR$/downloadlistdemo" />
+            <option value="$PROJECT_DIR$/graphicfun" />
+            <option value="$PROJECT_DIR$/hellokotlin" />
             <option value="$PROJECT_DIR$/ipcdemo" />
+            <option value="$PROJECT_DIR$/labrecycler" />
+            <option value="$PROJECT_DIR$/lib_views" />
+            <option value="$PROJECT_DIR$/materialanim" />
+            <option value="$PROJECT_DIR$/moduleLoader" />
+            <option value="$PROJECT_DIR$/navichooser" />
+            <option value="$PROJECT_DIR$/propertyanim" />
+            <option value="$PROJECT_DIR$/rxdemo" />
+            <option value="$PROJECT_DIR$/spanfun" />
+            <option value="$PROJECT_DIR$/transtitions" />
+            <option value="$PROJECT_DIR$/vectorydrawable_demo" />
+            <option value="$PROJECT_DIR$/webviewtest" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>

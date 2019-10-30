@@ -3,8 +3,8 @@ package com.example.slab.customviewplayground.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -42,11 +42,11 @@ public class CenterPaddingStartTextView extends AppCompatTextView {
                     setMaxLines(2);
 
                     final TypedArray a = getContext().obtainStyledAttributes(null,
-                            android.support.v7.appcompat.R.styleable.TextAppearance,
+                            androidx.appcompat.appcompat.R.styleable.TextAppearance,
                             android.R.attr.textAppearanceMedium,
                             android.R.style.TextAppearance_Medium);
                     final int textSize = a.getDimensionPixelSize(
-                            android.support.v7.appcompat.R.styleable.TextAppearance_android_textSize, 0);
+                            androidx.appcompat.appcompat.R.styleable.TextAppearance_android_textSize, 0);
                     if (textSize != 0) {
                         // textSize is already expressed in pixels
                         setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);

@@ -3,7 +3,7 @@ package com.example.slab.customviewplayground;
 import android.content.ClipData;
 import android.graphics.Canvas;
 import android.graphics.Point;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;

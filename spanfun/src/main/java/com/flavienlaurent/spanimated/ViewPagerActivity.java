@@ -1,12 +1,10 @@
 package com.flavienlaurent.spanimated;
 
-import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.util.Log;

@@ -1,7 +1,7 @@
 package com.example.slab.dagger.models;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.example.slab.dagger.BR;
 

@@ -1,6 +1,6 @@
 package io.github.hotstu.rxdemo;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -62,7 +62,7 @@ public class TestFlowable {
             public Worker createWorker() {
                 return new ExecutorScheduler.ExecutorWorker(new Executor() {
                     @Override
-                    public void execute(@android.support.annotation.NonNull Runnable command) {
+                    public void execute(@androidx.annotation.NonNull Runnable command) {
                         command.run();
                     }
                 });

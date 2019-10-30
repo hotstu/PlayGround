@@ -2,7 +2,7 @@ package io.github.hotstu.graphicfun.noiseEffect;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 

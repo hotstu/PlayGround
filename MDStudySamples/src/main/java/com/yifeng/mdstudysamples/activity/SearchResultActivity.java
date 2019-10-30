@@ -3,7 +3,7 @@ package com.yifeng.mdstudysamples.activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.yifeng.mdstudysamples.R;
 import com.yifeng.mdstudysamples.utils.ToastUtils;

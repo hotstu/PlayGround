@@ -2,11 +2,11 @@ package com.example.slab.customviewplayground.view;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -337,7 +337,7 @@ public class MyFrameLayout extends FrameLayout {
     }
     //endregion
 
-    public static class RefreshView extends android.support.v7.widget.AppCompatImageView {
+    public static class RefreshView extends androidx.appcompat.widget.AppCompatImageView {
         private static final int MAX_ALPHA = 255;
         private static final float TRIM_RATE = 0.85f;
 

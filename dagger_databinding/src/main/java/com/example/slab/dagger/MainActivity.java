@@ -1,6 +1,6 @@
 package com.example.slab.dagger;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.example.slab.dagger.databinding.ActivityMainBinding;

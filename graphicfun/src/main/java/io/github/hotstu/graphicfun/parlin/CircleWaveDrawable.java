@@ -3,7 +3,7 @@ package io.github.hotstu.graphicfun.parlin;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * @author hglf

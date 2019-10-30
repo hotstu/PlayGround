@@ -1,6 +1,6 @@
 package com.example.slab.dagger.models;
 
-import android.databinding.ObservableBoolean;
+import androidx.databinding.ObservableBoolean;
 
 import javax.inject.Inject;
 

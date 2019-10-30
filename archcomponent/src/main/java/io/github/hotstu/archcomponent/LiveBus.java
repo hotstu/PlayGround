@@ -1,6 +1,6 @@
 package io.github.hotstu.archcomponent;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 /**
  * 使用LiveData实现eventbus，

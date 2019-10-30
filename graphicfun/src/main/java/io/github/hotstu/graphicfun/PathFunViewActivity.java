@@ -1,8 +1,8 @@
 package io.github.hotstu.graphicfun;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatSeekBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSeekBar;
 import android.widget.SeekBar;
 
 import io.github.hotstu.graphicfun.pathFun.PathFunView2Progressing;

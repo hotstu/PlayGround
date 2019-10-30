@@ -3,7 +3,7 @@ package io.github.hotstu.webviewtest;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;

@@ -1,6 +1,6 @@
 package com.example.slab.dagger.binding;
 
-import android.databinding.BindingAdapter;
+import androidx.databinding.BindingAdapter;
 import android.util.Log;
 import android.widget.TextView;
 
