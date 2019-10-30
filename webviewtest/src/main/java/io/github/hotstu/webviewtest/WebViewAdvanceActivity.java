@@ -1,9 +1,10 @@
 package io.github.hotstu.webviewtest;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.netease.nimlib.jsbridge.util.WebViewConfig;
 
@@ -18,7 +19,7 @@ public class WebViewAdvanceActivity extends AppCompatActivity {
         initWebView();
     }
 
-        private void initWebView() {
+    private void initWebView() {
         webView = findViewById(R.id.web);
 
         WebSettings settings = webView.getSettings();
