@@ -12,6 +12,31 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        int flag = 1 << 2;
+        int flag2 = 1 << 4;
+        addFlag(flag);
+        addFlag(flag2);
+        assertTrue(hasFlag(flag));
+        assertTrue(hasFlag(flag2));
+        removeFlag(flag);
+        assertFalse(hasFlag(flag));
+        assertTrue(hasFlag(flag2));
+        removeFlag(flag2);
+        assertFalse(hasFlag(flag));
+        assertFalse(hasFlag(flag2));
+
+    }
+
+    private int flagkeep = 0;
+    private void addFlag(int flag) {
+        flagkeep |= flag;
+    }
+
+    private void removeFlag(int flag) {
+        flagkeep &= ~flag;
+    }
+
+    private boolean hasFlag(int flag) {
+        return (flagkeep & flag) != 0;
     }
 }

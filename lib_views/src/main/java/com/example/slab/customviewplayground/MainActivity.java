@@ -1,17 +1,18 @@
 package com.example.slab.customviewplayground;
 
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.core.view.ViewCompat;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
+
 import com.example.slab.loader.activities.BaseLogActivity;
 import com.example.slab.loader.logger.Log;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends BaseLogActivity implements View.OnClickListener {
     View target;
@@ -20,11 +21,11 @@ public class MainActivity extends BaseLogActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         target = findViewById(android.R.id.text1);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(this);
         mScroller = new Scroller(this);
 
@@ -66,12 +67,12 @@ public class MainActivity extends BaseLogActivity implements View.OnClickListene
     }
 
     public void scroll(View btnScroll) {
-        target.setScrollX(target.getScrollX() + 10);
+        target.scrollBy(10, 0);
         //target.invalidate();
     }
 
     public void translationx(View btnTranslationx) {
-        ViewCompat.setTranslationX(target, ViewCompat.getTranslationX(target) + 10);
+        target.setTranslationX(target.getTranslationX() + 10);
         //target.invalidate();
     }
 
@@ -79,6 +80,10 @@ public class MainActivity extends BaseLogActivity implements View.OnClickListene
         ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) target.getLayoutParams();
         params.leftMargin += 10;
         target.requestLayout();
+    }
+
+    public void offset(View btn) {
+        ViewCompat.offsetLeftAndRight(target, 10);
     }
 
 

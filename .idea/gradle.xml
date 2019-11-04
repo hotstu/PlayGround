@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/LaboTouchHanding" />
             <option value="$PROJECT_DIR$/MDStudySamples" />
             <option value="$PROJECT_DIR$/appglide" />
             <option value="$PROJECT_DIR$/archcomponent" />
@@ -16,6 +17,7 @@
             <option value="$PROJECT_DIR$/desionlib" />
             <option value="$PROJECT_DIR$/dialogfun" />
             <option value="$PROJECT_DIR$/downloadlistdemo" />
+            <option value="$PROJECT_DIR$/exoplayer" />
             <option value="$PROJECT_DIR$/graphicfun" />
             <option value="$PROJECT_DIR$/hellokotlin" />
             <option value="$PROJECT_DIR$/ipcdemo" />

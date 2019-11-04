@@ -2,12 +2,10 @@ package com.example.slab.customviewplayground.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * Created by hotstuNg on 2016/7/10.
@@ -32,8 +30,6 @@ public class MyView extends View {
         Log.i(TAG, "dispatchTouchEvent start:" + event) ;
         boolean r = super.dispatchTouchEvent(event);
         Log.i(TAG, "dispatchTouchEvent end: " + r + "," + event) ;
-        ViewGroup vg = (ViewGroup) getParent();
-        vg.requestDisallowInterceptTouchEvent(true);
         return r;
     }
 
@@ -48,7 +44,6 @@ public class MyView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         Log.d(TAG, "onMeasure() called with: " + "widthMeasureSpec = [" + MeasureSpec.toString(widthMeasureSpec) + "], heightMeasureSpec = [" + MeasureSpec.toString(heightMeasureSpec) + "]");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
         Log.d(TAG, "after onMeasure()  : " + "width = [" + getMeasuredWidth() + "], height = [" + getMeasuredHeight() + "]");
 
     }
@@ -68,6 +63,5 @@ public class MyView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.argb(77, 55, 55, 255));
     }
 }

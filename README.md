@@ -1,5 +1,3 @@
-ext {
-    modules=[
             ':dagger_databinding',
             ':appglide',
             ':labrecycler',
@@ -20,14 +18,4 @@ ext {
             ':moduleLoader',
             ':dialogfun',
             ':vectorydrawable_demo',
-            ':ipcdemo',
-            ':exoplayer',
-            ':LaboTouchHanding'
-    ]
-}
-
-ext {
-    thirdLibs = [
-        timber:'com.jakewharton.timber:timber:4.7.1'
-    ]
-}
+            ':ipcdemo'

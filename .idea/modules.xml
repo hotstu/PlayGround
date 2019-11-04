@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LaboTouchHanding/LaboTouchHanding.iml" filepath="$PROJECT_DIR$/LaboTouchHanding/LaboTouchHanding.iml" />
       <module fileurl="file://$PROJECT_DIR$/MDStudySamples/MDStudySamples.iml" filepath="$PROJECT_DIR$/MDStudySamples/MDStudySamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayGround.iml" filepath="$PROJECT_DIR$/PlayGround.iml" />
       <module fileurl="file://$PROJECT_DIR$/customtab/PlayGround-customtab.iml" filepath="$PROJECT_DIR$/customtab/PlayGround-customtab.iml" />
@@ -14,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/desionlib/desionlib.iml" filepath="$PROJECT_DIR$/desionlib/desionlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/dialogfun/dialogfun.iml" filepath="$PROJECT_DIR$/dialogfun/dialogfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" filepath="$PROJECT_DIR$/downloadlistdemo/downloadlistdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exoplayer/exoplayer.iml" filepath="$PROJECT_DIR$/exoplayer/exoplayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphicfun/graphicfun.iml" filepath="$PROJECT_DIR$/graphicfun/graphicfun.iml" />
       <module fileurl="file://$PROJECT_DIR$/hellokotlin/hellokotlin.iml" filepath="$PROJECT_DIR$/hellokotlin/hellokotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/ipcdemo/ipcdemo.iml" filepath="$PROJECT_DIR$/ipcdemo/ipcdemo.iml" />

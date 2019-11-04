@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.slab.customviewplayground.MainActivity"
     tools:showIn="@layout/activity_main">
+
     <fragment
         android:id="@+id/log_fragment"
         android:name="com.example.slab.loader.logger.LogFragment"
         android:layout_width="match_parent"
-        android:layout_height="200.0dp"
-         />
-    <TextView
+        android:layout_height="200.0dp" />
+
+    <com.example.slab.customviewplayground.view.MyView
         android:id="@android:id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#a1cee1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@id/log_fragment"
+        android:background="#a1cee1"
         android:text="Hello World!" />
 
 
@@ -49,6 +50,12 @@
             android:layout_height="wrap_content"
             android:onClick="layoutMargin"
             android:text="layoutMarginLeft+10" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="offset"
+            android:text="offset+10" />
     </LinearLayout>
 
 
