@@ -6,3 +6,4 @@ apply from: './config.gradle'
 modules.each {
     include it
 }
+include ':viewfactory'

@@ -2,14 +2,15 @@ package com.example.slab.transtitions;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slab.loader.widget.SlabAdapter;
 
@@ -35,9 +36,6 @@ public class MainActivity2 extends AppCompatActivity implements SlabAdapter.Arra
         root.setAdapter(slabAdapter);
         setContentView(root);
     }
-
-
-
 
     @Override
     public void onClick(View v) {

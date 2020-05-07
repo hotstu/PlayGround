@@ -21,17 +21,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile "androidx.appcompat:appcompat:1.0.0"
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile project(':moduleLoader')
-    compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation "androidx.appcompat:appcompat:1.0.0"
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation project(':moduleLoader')
+    implementation('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
         exclude group: 'glide-parent'
     }
-    compile 'com.google.dagger:dagger:2.5'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    compile "androidx.recyclerview:recyclerview:1.0.0"
+    implementation 'com.google.dagger:dagger:2.20'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.20'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
 
 }

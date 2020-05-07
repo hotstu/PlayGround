@@ -22,12 +22,45 @@ ext {
             ':vectorydrawable_demo',
             ':ipcdemo',
             ':exoplayer',
-            ':LaboTouchHanding'
+            ':LaboTouchHanding',
+            ':MyLayoutParser'
     ]
 }
 
 ext {
     thirdLibs = [
-        timber:'com.jakewharton.timber:timber:4.7.1'
     ]
+
+    config = [
+            'build-tools'    : '28.0.3',
+            'compile-sdk'    : 28,
+            'target-sdk'     : 28,
+            'min-sdk'        : 16,
+    ]
+
+
+    deps = [
+            'timber'                  :'com.jakewharton.timber:timber:4.7.1',
+            'x-annotations'           : 'androidx.annotation:annotation:1.1.0',
+            'x-recycler-view'         : 'androidx.recyclerview:recyclerview:1.0.0',
+            'x-core'                  : 'androidx.core:core:1.0.2',
+            'x-appcompat'             : 'androidx.appcompat:appcompat:1.1.0',
+            'okhttp'                  : 'com.squareup.okhttp3:okhttp:3.9.0',
+            'glide'                   : 'com.github.bumptech.glide:glide:4.9.0',
+            'coil'                    : 'io.coil-kt:coil:0.8.0'
+    ]
+
+    deps['annotationProcessor'] = [
+            //'prism4j-bundler': 'io.noties:prism4j-bundler:2.0.0',
+            //'dagger-compiler': "com.google.dagger:dagger-compiler:$daggerVersion"
+    ]
+
+    deps['test'] = [
+            'junit'               : 'junit:junit:4.12',
+            'robolectric'         : 'org.robolectric:robolectric:3.8',
+            'ix-java'             : 'com.github.akarnokd:ixjava:1.0.0',
+            'commons-io'          : 'commons-io:commons-io:2.6',
+            'mockito'             : 'org.mockito:mockito-core:2.21.0',
+    ]
+
 }

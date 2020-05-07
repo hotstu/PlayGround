@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -10,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/LaboTouchHanding" />
             <option value="$PROJECT_DIR$/MDStudySamples" />
+            <option value="$PROJECT_DIR$/MyLayoutParser" />
             <option value="$PROJECT_DIR$/appglide" />
             <option value="$PROJECT_DIR$/archcomponent" />
             <option value="$PROJECT_DIR$/customtab" />
@@ -31,11 +35,11 @@
             <option value="$PROJECT_DIR$/spanfun" />
             <option value="$PROJECT_DIR$/transtitions" />
             <option value="$PROJECT_DIR$/vectorydrawable_demo" />
+            <option value="$PROJECT_DIR$/viewfactory" />
             <option value="$PROJECT_DIR$/webviewtest" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>

@@ -11,15 +11,15 @@ import android.graphics.Color;
 import android.graphics.EmbossMaskFilter;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import com.google.android.material.chip.ChipDrawable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Layout;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.AlignmentSpan;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.BulletSpan;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.LocaleSpan;
@@ -43,6 +43,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.chip.ChipDrawable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -198,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle(mActionBarTitleSpannableString);
     }
 
-    enum SpanType {BULLET, QUOTE, UNDERLINE, STRIKETHROUGH, BGCOLOR, FGCOLOR, MASKFILTER_EMBOSS, SUBSCRIPT, STYLE, ABSOLUTE_SIZE_SPAN, RELATIVE_SIZE_SPAN, TEXTAPPEARANCE_SPAN, SUPERSCRIPT, LOCALE_SPAN, SCALEX_SPAN, TYPEFACE_SPAN, IMAGE_SPAN, MASKFILTER_BLUR, ALIGNMENT_STANDARD, CHIP}
+    enum SpanType {BULLET, QUOTE, UNDERLINE, STRIKETHROUGH, BGCOLOR, FGCOLOR, MASKFILTER_EMBOSS, SUBSCRIPT, STYLE, ABSOLUTE_SIZE_SPAN, RELATIVE_SIZE_SPAN, TEXTAPPEARANCE_SPAN, SUPERSCRIPT, LOCALE_SPAN, SCALEX_SPAN, TYPEFACE_SPAN, IMAGE_SPAN, MASKFILTER_BLUR, ALIGNMENT_STANDARD, CHIP,CLICKABLE}
 
     ;
 
@@ -300,12 +305,22 @@ public class MainActivity extends AppCompatActivity {
                 span = new ImageSpan(chip);
                 mBaconIpsumSpannableString.setSpan(span, wordPosition.start, wordPosition.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 break;
+            case CLICKABLE:
+                span = new ClickableSpan() {
+                    @Override
+                    public void onClick(@NonNull View widget) {
+                        Log.d("ClickableSpan", "click");
+                    }
+                };
+                mBaconIpsumSpannableString.setSpan(span, wordPosition.start, wordPosition.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                break;
         }
         if (span == null) {
             return;
         }
         mSpans.add(span);
         mText.setText(mBaconIpsumSpannableString);
+        mText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void animateColorSpan() {
